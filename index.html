@@ -12,7 +12,7 @@
             font-family: 'Arial', sans-serif;
             color: #fff;
             background: #000;
-            overflow: hidden;
+            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
         }
 
         header {
@@ -47,17 +47,21 @@
             color: #fff;
         }
 
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 100vh; /* هر بخش حداقل یک صفحه کامل */
+        }
+
         #hero {
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             position: relative;
-            overflow: hidden;
+            background: #000;
         }
 
         #hero .content {
-            text-align: center;
             z-index: 1;
         }
 
@@ -106,52 +110,50 @@
     </style>
 </head>
 <body>
-    <div id="container">
-        <!-- بخش اصلی سایت -->
-        <header>
-            <div class="logo">
-                <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx">
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="#about">درباره من</a></li>
-                    <li><a href="#services">خدمات</a></li>
-                    <li><a href="#contact">تماس با ما</a></li>
-                </ul>
-            </nav>
-        </header>
-
-        <section id="hero">
-            <div class="content">
-                <h1>سامیر CRFx</h1>
-                <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
-                <div class="buttons">
-                    <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
-                    <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
-                    <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
-                </div>
-            </div>
-            <canvas id="bgCanvas"></canvas>
-        </section>
-
-        <section id="about">
-            <h2>درباره من</h2>
-            <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
-        </section>
-
-        <section id="services">
-            <h2>خدمات ما</h2>
+    <header>
+        <div class="logo">
+            <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx">
+        </div>
+        <nav>
             <ul>
-                <li>آموزش رایگان فارکس</li>
-                <li>سیگنال‌های حرفه‌ای و VIP</li>
-                <li>پشتیبانی و ارتباط با ادمین</li>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
             </ul>
-        </section>
+        </nav>
+    </header>
 
-        <footer>
-            <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
-        </footer>
-    </div>
+    <section id="hero">
+        <canvas id="bgCanvas"></canvas>
+        <div class="content">
+            <h1>سامیر CRFx</h1>
+            <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
+            <div class="buttons">
+                <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
+                <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>درباره من</h2>
+        <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+    </section>
+
+    <section id="services">
+        <h2>خدمات ما</h2>
+        <ul>
+            <li>آموزش رایگان فارکس</li>
+            <li>سیگنال‌های حرفه‌ای و VIP</li>
+            <li>پشتیبانی و ارتباط با ادمین</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
+    </footer>
+
     <script>
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
