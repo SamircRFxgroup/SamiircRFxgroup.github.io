@@ -28,7 +28,6 @@
 
         header .logo img {
             width: 120px;
-            display: none; /* پنهان کردن لوگو در بخش header */
         }
 
         header nav ul {
@@ -46,6 +45,22 @@
 
         header nav ul li a:hover {
             color: #fff;
+        }
+
+        /* اضافه کردن آیکون‌های شبکه‌های اجتماعی */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            transition: 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.1);
         }
 
         section {
@@ -105,6 +120,7 @@
             color: #00ffcc;
         }
 
+        /* انتقال لوگو به وسط و تنظیم فاصله */
         #logo-footer {
             margin-top: 20px;
         }
@@ -133,6 +149,12 @@
         #about, #services {
             margin-bottom: 30px;
         }
+
+        /* استایل برای لوگو */
+        #social-logo {
+            margin: 40px 0;
+        }
+
     </style>
 </head>
 <body>
@@ -147,6 +169,11 @@
                 <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/samircrfxgroup" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام"></a>
+            <a href="https://t.me/milionersho_cRFx" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام"></a>
+            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب"></a>
+        </div>
     </header>
 
     <section id="hero">
@@ -160,10 +187,12 @@
                 <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
             </div>
         </div>
-        <div id="logo-footer">
-            <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx" width="100">
-        </div>
     </section>
+
+    <!-- قرار دادن لوگو بین بخش‌های درباره و خدمات -->
+    <div id="social-logo">
+        <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx" width="150">
+    </div>
 
     <section id="about">
         <h2>درباره من</h2>
@@ -202,7 +231,7 @@
             });
         }
 
-        function drawBackground() {
+                function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             lines.forEach(line => {
