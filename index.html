@@ -47,10 +47,14 @@
             color: #fff;
         }
 
-        /* اضافه کردن آیکون‌های شبکه‌های اجتماعی */
+        /* انتقال آیکون‌ها به پایین header */
         .social-icons {
             display: flex;
             gap: 10px;
+            position: absolute;
+            bottom: -40px; /* فاصله از پایین header */
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .social-icons a img {
@@ -145,6 +149,14 @@
             margin-bottom: 30px;
         }
 
+        /* ثابت کردن آیکون تلگرام */
+        #telegram-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
     </style>
 </head>
 <body>
@@ -159,18 +171,22 @@
                 <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-            </a>
-            <a href="https://t.me/milionersho_cRFx" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
-            </a>
-            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-            </a>
-        </div>
     </header>
+
+    <!-- آیکون‌ها در پایین Header -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+        </a>
+        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+        </a>
+    </div>
+
+    <!-- آیکون تلگرام به صورت ثابت -->
+    <a href="https://t.me/milionersho_cRFx" target="_blank" id="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام" width="40">
+    </a>
 
     <section id="hero">
         <canvas id="bgCanvas"></canvas>
@@ -245,7 +261,7 @@
             requestAnimationFrame(drawBackground);
         }
 
-        // تنظیم مجدد اندازه
+         // تنظیم مجدد اندازه
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
