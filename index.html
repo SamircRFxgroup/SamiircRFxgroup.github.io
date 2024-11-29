@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وب‌سایت Samir CRFx</title>
+    <title>وب‌سایت حرفه‌ای Samir CRFx</title>
     <style>
         /* استایل‌های عمومی */
         body {
@@ -11,46 +11,68 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             color: #fff;
+            background: #000;
             overflow: hidden;
         }
 
         header {
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
             position: fixed;
-            top: 0;
             width: 100%;
-            z-index: 100;
-            text-align: center;
+            z-index: 10;
         }
 
-        header img {
+        header .logo img {
             width: 120px;
         }
 
-        .hero {
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #00ffcc;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #fff;
+        }
+
+        #hero {
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-direction: column;
             position: relative;
-            z-index: 1;
-            text-align: center;
+            overflow: hidden;
         }
 
-        .hero h1 {
+        #hero .content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        #hero .content h1 {
             font-size: 48px;
             margin-bottom: 20px;
             text-shadow: 0px 0px 10px #00ffcc;
         }
 
-        .hero p {
+        #hero .content p {
             font-size: 20px;
             margin-bottom: 30px;
         }
 
-        .hero a {
+        #hero .buttons a {
             padding: 15px 30px;
             margin: 5px;
             background-color: #00ffcc;
@@ -58,68 +80,119 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 18px;
-            box-shadow: 0 0 10px #00ffcc;
+            transition: 0.3s;
         }
 
-        .hero a:hover {
+        #hero .buttons a:hover {
             background-color: #fff;
             color: #00ffcc;
         }
 
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            font-size: 14px;
+        }
+
         /* پس‌زمینه متحرک */
-        .background {
-            position: fixed;
+        #bgCanvas {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(34,34,34,1) 100%);
-            overflow: hidden;
             z-index: 0;
-        }
-
-        .background .particle {
-            position: absolute;
-            background: linear-gradient(45deg, #00ffcc, #0066ff);
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            animation: move 10s linear infinite;
-        }
-
-        @keyframes move {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) translateX(50vw);
-                opacity: 0;
-            }
         }
     </style>
 </head>
 <body>
-    <div class="background">
-        <!-- ایجاد ذرات متحرک -->
-        <div class="particle" style="left: 20%; top: -10%; animation-delay: 0s;"></div>
-        <div class="particle" style="left: 50%; top: -15%; animation-delay: 2s;"></div>
-        <div class="particle" style="left: 70%; top: -20%; animation-delay: 4s;"></div>
-        <div class="particle" style="left: 30%; top: -25%; animation-delay: 6s;"></div>
-        <div class="particle" style="left: 80%; top: -30%; animation-delay: 8s;"></div>
-        <div class="particle" style="left: 40%; top: -35%; animation-delay: 10s;"></div>
+    <div id="container">
+        <!-- بخش اصلی سایت -->
+        <header>
+            <div class="logo">
+                <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#about">درباره من</a></li>
+                    <li><a href="#services">خدمات</a></li>
+                    <li><a href="#contact">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <section id="hero">
+            <div class="content">
+                <h1>سامیر CRFx</h1>
+                <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
+                <div class="buttons">
+                    <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
+                    <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
+                    <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+                </div>
+            </div>
+            <canvas id="bgCanvas"></canvas>
+        </section>
+
+        <section id="about">
+            <h2>درباره من</h2>
+            <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+        </section>
+
+        <section id="services">
+            <h2>خدمات ما</h2>
+            <ul>
+                <li>آموزش رایگان فارکس</li>
+                <li>سیگنال‌های حرفه‌ای و VIP</li>
+                <li>پشتیبانی و ارتباط با ادمین</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
+        </footer>
     </div>
+    <script>
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
 
-    <header>
-        <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگو Samir CRFx">
-    </header>
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-    <section class="hero">
-        <h1>سامیر CRFx</h1>
-        <p>۵ سال تجربه در بازار فارکس</p>
-        <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
-        <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
-        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
-    </section>
+        const particles = [];
+
+        for (let i = 0; i < 100; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 5,
+                speedX: Math.random() * 2 - 1,
+                speedY: Math.random() * 2 - 1,
+                color: `rgba(0, 255, 204, 0.7)`
+            });
+        }
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(p => {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = p.color;
+                ctx.fill();
+
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+            });
+
+            requestAnimationFrame(drawParticles);
+        }
+
+        drawParticles();
+    </script>
 </body>
 </html>
