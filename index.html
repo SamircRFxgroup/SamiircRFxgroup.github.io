@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وب‌سایت حرفه‌ای Samir CRFx</title>
+    <title>سامیر CRFx | بازار فارکس</title>
     <style>
-        /* استایل‌های عمومی */
+        /* استایل عمومی */
         body {
             margin: 0;
             padding: 0;
@@ -50,15 +50,18 @@
         section {
             padding: 100px 20px;
             text-align: center;
-            min-height: 100vh; /* هر بخش حداقل یک صفحه کامل */
+            min-height: 100vh;
+            position: relative;
         }
 
         #hero {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             position: relative;
             background: #000;
+            z-index: 1;
         }
 
         #hero .content {
@@ -67,18 +70,19 @@
 
         #hero .content h1 {
             font-size: 48px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0px 0px 10px #00ffcc;
         }
 
         #hero .content p {
             font-size: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         #hero .buttons a {
+            display: inline-block;
             padding: 15px 30px;
-            margin: 5px;
+            margin: 10px;
             background-color: #00ffcc;
             color: #000;
             text-decoration: none;
@@ -92,6 +96,13 @@
             color: #00ffcc;
         }
 
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            font-size: 14px;
+        }
+
         #bgCanvas {
             position: absolute;
             top: 0;
@@ -99,13 +110,6 @@
             width: 100%;
             height: 100%;
             z-index: 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.9);
-            font-size: 14px;
         }
     </style>
 </head>
@@ -158,63 +162,50 @@
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
 
-        // تنظیم اندازه بوم
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // ذرات
-        const particles = [];
-
-        for (let i = 0; i < 50; i++) { // تعداد ذرات
-            particles.push({
+        // خطوط متحرک
+        const lines = [];
+        for (let i = 0; i < 20; i++) {
+            lines.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                radius: Math.random() * 5,
-                speedX: Math.random() * 2 - 1,
-                speedY: Math.random() * 2 - 1,
-                color: `rgba(0, 255, 204, 0.7)`
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 1 + 0.5,
+                color: `rgba(0, 255, 204, 0.6)`
             });
         }
 
-        // رسم ذرات
-        function drawParticles() {
+        function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            particles.forEach(p => {
+            lines.forEach(line => {
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-                ctx.fillStyle = p.color;
-                ctx.fill();
+                ctx.moveTo(line.x, line.y);
+                ctx.lineTo(line.x, line.y - line.length);
+                ctx.strokeStyle = line.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
 
-                p.x += p.speedX * 0.5; // کاهش سرعت
-                p.y += p.speedY * 0.5;
+                line.y += line.speed;
 
-                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                }
             });
 
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(drawBackground);
         }
 
-        // تنظیم مجدد اندازه صفحه
+        // تنظیم مجدد اندازه
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
-            particles.length = 0; // پاک کردن ذرات
-            for (let i = 0; i < 50; i++) {
-                particles.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 5,
-                    speedX: Math.random() * 2 - 1,
-                    speedY: Math.random() * 2 - 1,
-                    color: `rgba(0, 255, 204, 0.7)`
-                });
-            }
         });
 
-        drawParticles();
+        drawBackground();
     </script>
 </body>
 </html>
