@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وب‌سایت من</title>
+    <style>
+        /* استایل پایه سایت */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* استایل هدر */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #111;
+            padding: 20px;
+            color: #fff;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .header .logo-img {
+            width: 120px;
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-list li {
+            margin-left: 20px;
+        }
+
+        .nav-link {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #00ffcc;
+        }
+
+        /* بخش Hero */
+        .hero {
+            height: 100vh;
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            background-image: url('background_image_url'); /* جایگزین با آدرس تصویر پس‌زمینه */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #00ffcc;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-buttons a:hover {
+            background-color: #fff;
+            color: #00ffcc;
+        }
+
+        /* انیمیشن برای متن */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* استایل برای شبکه‌های اجتماعی */
+        .social-links {
+            padding: 50px 20px;
+            background-color: #111;
+            text-align: center;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .social-icon {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #00ffcc;
+        }
+
+        /* استایل بخش تماس */
+        .contact {
+            background-color: #333;
+            color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .admin-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .admin-link {
+            margin: 0 15px;
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .admin-link:hover {
+            color: #00ffcc;
+        }
+
+        /* استایل فوتر */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* طراحی واکنش‌گرا */
+        @media (max-width: 768px) {
+            .nav-list {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .cta-buttons a {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .social-icons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- بخش هدر -->
+    <header class="header">
+        <div class="logo">
+            <img src="path_to_your_logo_image" alt="لوگو شما" class="logo-img">
+        </div>
+        <nav>
+            <ul class="nav-list">
+                <li><a href="#home" class="nav-link">خانه</a></li>
+                <li><a href="#about" class="nav-link">درباره من</a></li>
+                <li><a href="#social" class="nav-link">شبکه‌های اجتماعی</a></li>
+                <li><a href="#contact" class="nav-link">تماس با من</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- بخش معرفی -->
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>سلام! من 5 سال است که در بازار فارکس فعالیت دارم</h1>
+            <p>برای آموزش‌های رایگان به کانال‌های من در شبکه‌های اجتماعی مراجعه کنید.</p>
+            <div class="cta-buttons">
+                <a href="https://www.instagram.com/samircrfxgroup" class="cta-btn">اینستاگرام</a>
+                <a href="https://t.me/milionersho_cRFx" class="cta-btn">تلگرام</a>
+                <a href="https://www.youtube.com/@Samircrfxgroup" class="cta-btn">یوتیوب</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- بخش شبکه‌های اجتماعی -->
+    <section id="social" class="social-links">
+        <h2>به شبکه‌های اجتماعی من بپیوندید</h2>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/samircrfxgroup" class="social-icon">اینستاگرام</a>
+            <a href="https://t.me/milionersho_cRFx" class="social-icon">تلگرام</a>
+            <a href="https://www.youtube.com/@Samircrfxgroup" class="social-icon">یوتیوب</a>
+        </div>
+    </section>
+
+    <!-- بخش تماس -->
+    <section id="contact" class="contact">
+        <h2>تماس با من</h2>
+        <p>برای دریافت سیگنال‌ها و مشاوره، با ادمین‌های ما در تلگرام ارتباط برقرار کنید:</p>
+        <div class="admin-links">
+            <a href="https://t.me/cRFxfamily" class="admin-link">ادمین اول</a>
+            <a href="https://t.me/Samircrfx_signal" class="admin-link">ادمین دوم (سیگنال VIP)</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Samir CRFx</p>
+    </footer>
+
+    <script>
+        // کد جاوا اسکریپت برای انیمیشن‌ها و تعاملات
+        document.addEventListener('DOMContentLoaded', function () {
+            // انیمیشن ورود لوگو
+            const logo = document.querySelector('.logo-img');
+            logo.classList.add('fadeIn');
+            
+            // انیمیشن دکمه‌ها
+            const buttons = document.querySelectorAll('.cta-btn');
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', function() {
+                    button.style.backgroundColor = '#fff';
+                    button.style.color = '#00ffcc';
+                });
+
+                button.addEventListener('mouseout', function() {
+                    button.style.backgroundColor = '#00ffcc';
+                    button.style.color = '#fff';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
