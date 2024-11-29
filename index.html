@@ -28,6 +28,7 @@
 
         header .logo img {
             width: 120px;
+            display: none; /* پنهان کردن لوگو در بخش header */
         }
 
         header nav ul {
@@ -77,6 +78,14 @@
         #hero .content p {
             font-size: 20px;
             margin-bottom: 20px;
+        }
+
+        /* لیست دکمه‌ها */
+        #hero .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
         #hero .buttons a {
@@ -181,15 +190,15 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خطوط متحرک
+        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
         const lines = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 30; i++) {
             lines.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
                 length: Math.random() * 150 + 50,
-                speed: Math.random() * 1 + 0.5,
-                color: `rgba(0, 255, 204, 0.6)`
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
             });
         }
 
@@ -209,6 +218,7 @@
                 if (line.y > canvas.height) {
                     line.y = 0 - line.length;
                     line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
                 }
             });
 
