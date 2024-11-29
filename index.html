@@ -5,68 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وب‌سایت Samir CRFx</title>
     <style>
-        /* استایل‌های داخلی */
+        /* استایل‌های عمومی */
         body {
-            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #000;
+            font-family: 'Arial', sans-serif;
             color: #fff;
-            text-align: center;
+            overflow: hidden;
         }
 
         header {
-            background-color: #111;
+            background-color: rgba(0, 0, 0, 0.8);
             padding: 20px 0;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 10;
+            width: 100%;
+            z-index: 100;
+            text-align: center;
         }
 
         header img {
             width: 120px;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-size: 18px;
-        }
-
-        nav ul li a:hover {
-            color: #fff;
-        }
-
-        section {
-            padding: 50px 20px;
-        }
-
         .hero {
-            background-image: url('https://source.unsplash.com/1600x900/?finance');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-direction: column;
-        }
-
-        .hero img {
-            width: 150px;
-            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            text-align: center;
         }
 
         .hero h1 {
@@ -88,6 +58,7 @@
             text-decoration: none;
             border-radius: 5px;
             font-size: 18px;
+            box-shadow: 0 0 10px #00ffcc;
         }
 
         .hero a:hover {
@@ -95,63 +66,60 @@
             color: #00ffcc;
         }
 
-        footer {
-            background-color: #111;
-            padding: 20px;
-            color: #888;
-            font-size: 14px;
+        /* پس‌زمینه متحرک */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(34,34,34,1) 100%);
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .background .particle {
+            position: absolute;
+            background: linear-gradient(45deg, #00ffcc, #0066ff);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            animation: move 10s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) translateX(50vw);
+                opacity: 0;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="background">
+        <!-- ایجاد ذرات متحرک -->
+        <div class="particle" style="left: 20%; top: -10%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 50%; top: -15%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 70%; top: -20%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 30%; top: -25%; animation-delay: 6s;"></div>
+        <div class="particle" style="left: 80%; top: -30%; animation-delay: 8s;"></div>
+        <div class="particle" style="left: 40%; top: -35%; animation-delay: 10s;"></div>
+    </div>
+
     <header>
-        <!-- لوگوی شما در هدر -->
         <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگو Samir CRFx">
-        <nav>
-            <ul>
-                <li><a href="#about">درباره من</a></li>
-                <li><a href="#social">شبکه‌های اجتماعی</a></li>
-                <li><a href="#contact">تماس با ما</a></li>
-            </ul>
-        </nav>
     </header>
 
     <section class="hero">
-        <!-- لوگوی شما در بخش اصلی -->
-        <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگو Samir CRFx">
         <h1>سامیر CRFx</h1>
         <p>۵ سال تجربه در بازار فارکس</p>
         <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
         <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
         <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
     </section>
-
-    <section id="about">
-        <h2>درباره من</h2>
-        <p>من سامیر هستم و بیش از ۵ سال است که در بازار فارکس فعالیت دارم. هدف من آموزش و کمک به علاقه‌مندان به دنیای مالی است.</p>
-    </section>
-
-    <section id="social">
-        <h2>شبکه‌های اجتماعی من</h2>
-        <p>از طریق لینک‌های زیر به شبکه‌های اجتماعی من بپیوندید:</p>
-        <ul>
-            <li><a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a></li>
-            <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
-            <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
-        </ul>
-    </section>
-
-    <section id="contact">
-        <h2>تماس با من</h2>
-        <p>برای ارتباط با ادمین‌ها و عضویت در کانال VIP:</p>
-        <ul>
-            <li><a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a></li>
-            <li><a href="https://t.me/Samircrfx_signal" target="_blank">ادمین دوم</a></li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 تمامی حقوق محفوظ است. سامیر CRFx</p>
-    </footer>
 </body>
 </html>
