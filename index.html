@@ -17,7 +17,7 @@
 
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px;
             background: rgba(0, 0, 0, 0.8);
@@ -32,8 +32,12 @@
 
         header nav ul {
             list-style: none;
-            display: flex;
-            gap: 20px;
+            display: block;
+            margin-top: 20px;
+        }
+
+        header nav ul li {
+            margin-bottom: 10px;
         }
 
         header nav ul li a {
@@ -79,14 +83,8 @@
             margin-bottom: 20px;
         }
 
-        #hero .buttons {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 15px;
-        }
-
         #hero .buttons a {
+            display: inline-block;
             padding: 15px 30px;
             margin: 10px;
             background-color: #00ffcc;
@@ -122,10 +120,21 @@
             z-index: 0;
         }
 
+        section {
+            padding: 50px 20px;
+        }
+
         /* کاهش فاصله بین بخش‌ها */
         #about, #services {
             margin-bottom: 30px;
         }
+
+        /* دکمه‌های لیستی */
+        header nav ul li a {
+            display: block;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
@@ -183,36 +192,34 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // تنظیمات چارت قیمتی
-        const chartLines = [];
-        for (let i = 0; i < 100; i++) {
-            chartLines.push({
-                x: i * (canvas.width / 100),
+        // خطوط متحرک (چارت قیمت فارکس)
+        const lines = [];
+        for (let i = 0; i < 20; i++) {
+            lines.push({
+                x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                color: (Math.random() > 0.5) ? 'green' : 'red', // سبز برای صعودی و قرمز برای نزولی
-                direction: Math.random() > 0.5 ? 1 : -1, // جهت حرکت
-                length: Math.random() * 50 + 5,
-                speed: Math.random() * 2 + 1,
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 1 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز و سبز
             });
         }
 
         function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            chartLines.forEach(line => {
+            lines.forEach(line => {
                 ctx.beginPath();
                 ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y + line.length * line.direction);
+                ctx.lineTo(line.x, line.y - line.length);
                 ctx.strokeStyle = line.color;
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
-                line.y += line.speed * line.direction;
+                line.y += line.speed;
 
-                // تغییر جهت برای حرکت صعودی یا نزولی
-                if (line.y > canvas.height || line.y < 0) {
-                    line.direction *= -1;
-                    line.color = (line.direction === 1) ? 'green' : 'red';
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
                 }
             });
 
