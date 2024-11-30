@@ -109,6 +109,7 @@
             text-align: center;
             background: #1a1a1a;
             transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow less intense */
         }
 
         .section:hover {
@@ -132,7 +133,7 @@
         }
 
         .section ul li a {
-            color: #00ffcc;
+            color: #fff; /* White text for better readability */
             font-size: 22px;
             display: block;
             margin: 15px 0;
@@ -167,20 +168,25 @@
             color: #ffcc00;
         }
 
-        /* Animation Effects */
-        .fadeInUp {
-            animation: fadeInUp 1s ease-in-out;
+        /* Added Styling for Name and Logo at the Bottom */
+        .name-logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .name-logo-container h2 {
+            font-size: 28px;
+            color: #fff;
+            margin-right: 15px;
+        }
+
+        .name-logo-container img {
+            width: 50px;
+            height: 50px;
         }
 
         /* Background Animation for Price Chart */
@@ -202,6 +208,22 @@
             }
             100% {
                 transform: translateX(-100%);
+            }
+        }
+
+        /* Fade In Animation for Sections */
+        .fadeInUp {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -246,6 +268,11 @@
     <footer id="contact">
         <p>برای تماس با ما و دریافت آموزش‌های بیشتر، لطفاً از طریق لینک‌های بالا اقدام کنید.</p>
     </footer>
+
+    <div class="name-logo-container">
+        <h2>SamircRFxgroup</h2>
+        <img src="https://raw.githubusercontent.com/93f518db-c5bc-4595-8156-4cff6212603a/main/logo.png" alt="Logo">
+    </div>
 
     <div class="background-animation"></div>
 
