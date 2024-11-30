@@ -56,7 +56,7 @@
 
         // ایجاد کندل جدید با ویژگی‌های خاص و الگوهای قیمتی
         function createCandlestick() {
-            const x = candlesticks.length * (candleWidth + spaceBetween);
+            const x = canvas.width + candleWidth;  // شروع کندل از خارج صفحه
             const y = Math.random() * canvas.height;
             let open = Math.random() * 50 + y;
             let close = Math.random() * 50 + y;
@@ -121,28 +121,25 @@
                     Math.abs(candle.open - candle.close)
                 );
 
-                // حرکت تصادفی کندل‌ها
+                // حرکت کندل‌ها به سمت چپ
                 const randomBounce = Math.sin(Math.random() * Math.PI) * 3; // حرکت نوسانی تصادفی
                 candle.x -= candle.speed + randomBounce;
 
+                // حذف کندل‌های خارج از صفحه
                 if (candle.x < -candleWidth) {
-                    candlesticks.splice(index, 1); // حذف کندل‌های قدیمی
+                    candlesticks.splice(index, 1);
                 }
             });
 
             // اضافه کردن کندل جدید
-            if (candlesticks.length < canvas.width / (candleWidth + spaceBetween)) {
+            if (candlesticks.length < maxCandles) {
                 createCandlestick();
             }
         }
 
         function animate() {
-            try {
-                drawCandlesticks();
-                requestAnimationFrame(animate);
-            } catch (error) {
-                console.error('Animation Error:', error);
-            }
+            drawCandlesticks();
+            requestAnimationFrame(animate);
         }
 
         animate();
