@@ -50,21 +50,21 @@
         canvas.height = window.innerHeight;
 
         const candlesticks = [];
-        const maxCandles = 10; // تعداد کندل‌ها
-        const candleWidth = 20; // عرض هر کندل
-        const spaceBetween = 100; // فاصله عمودی بین کندل‌ها
+        const maxCandles = 100; // تعداد کندل‌ها (بیشتر)
+        const candleWidth = 8; // عرض هر کندل (نازک‌تر)
+        const spaceBetween = 10; // فاصله افقی کمتر بین کندل‌ها
 
         // ایجاد کندل جدید
         function createCandlestick() {
-            const y = -spaceBetween; // شروع کندل از بالای صفحه
-            const x = Math.random() * (canvas.width - candleWidth * 2) + candleWidth; // موقعیت تصادفی افقی
-            const open = Math.random() * 100 + 50;
-            const close = Math.random() * 100 + 50;
+            const x = candlesticks.length * (candleWidth + spaceBetween); // فاصله‌ی مرتب افقی
+            const y = Math.random() * canvas.height; // شروع تصادفی از بالا
+            const open = Math.random() * 50 + y;
+            const close = Math.random() * 50 + y;
             const high = Math.max(open, close) + Math.random() * 30;
             const low = Math.min(open, close) - Math.random() * 30;
-            const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)'; // قرمز یا سبز با شفافیت
+            const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)'; // قرمز یا سبز
 
-            candlesticks.push({ x, y, open, close, high, low, color });
+            candlesticks.push({ x, open, close, high, low, color });
 
             if (candlesticks.length > maxCandles) candlesticks.shift();
         }
@@ -76,8 +76,8 @@
             candlesticks.forEach(candle => {
                 ctx.beginPath();
                 // رسم خط بالا و پایین
-                ctx.moveTo(candle.x, candle.y + candle.high);
-                ctx.lineTo(candle.x, candle.y + candle.low);
+                ctx.moveTo(candle.x, candle.high);
+                ctx.lineTo(candle.x, candle.low);
                 ctx.strokeStyle = candle.color;
                 ctx.lineWidth = 2;
                 ctx.stroke();
@@ -86,30 +86,26 @@
                 ctx.fillStyle = candle.color;
                 ctx.fillRect(
                     candle.x - candleWidth / 2,
-                    candle.y + Math.min(candle.open, candle.close),
+                    Math.min(candle.open, candle.close),
                     candleWidth,
                     Math.abs(candle.open - candle.close)
                 );
-            });
-        }
 
-        // به‌روزرسانی و حرکت کندل‌ها
-        function updateCandlesticks() {
-            candlesticks.forEach(candle => {
-                candle.y += 2; // حرکت کندل‌ها به سمت پایین
+                // حرکت کندل‌ها به سمت چپ
+                candle.x -= 1;
             });
 
-            if (candlesticks.length && candlesticks[0].y > canvas.height) {
-                candlesticks.shift(); // حذف کندل‌هایی که از صفحه خارج شده‌اند
+            // حذف کندل‌هایی که از صفحه خارج می‌شوند
+            if (candlesticks.length && candlesticks[0].x < -candleWidth) {
+                candlesticks.shift();
             }
         }
 
         // حلقه انیمیشن
         function animate() {
-            if (candlesticks.length < maxCandles) {
+            if (candlesticks.length < canvas.width / (candleWidth + spaceBetween)) {
                 createCandlestick();
             }
-            updateCandlesticks();
             drawCandlesticks();
             requestAnimationFrame(animate);
         }
