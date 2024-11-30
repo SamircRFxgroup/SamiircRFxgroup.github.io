@@ -213,35 +213,38 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
-        const lines = [];
-        for (let i = 0; i < 30; i++) {
-            lines.push({
-                x: Math.random() * canvas.width,
+        // کندل‌های سبز و قرمز (شبیه به نمودار قیمتی)
+        const candles = [];
+        for (let i = 0; i < 100; i++) {
+            const isGreen = Math.random() > 0.5;
+            candles.push({
+                x: i * 10,
                 y: Math.random() * canvas.height,
-                length: Math.random() * 150 + 50,
-                speed: Math.random() * 2 + 0.5,
-                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
+                width: 8,
+                height: Math.random() * 100 + 10,
+                color: isGreen ? 'green' : 'red',
+                direction: isGreen ? 1 : -1
             });
         }
 
         function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            lines.forEach(line => {
+            candles.forEach(candle => {
                 ctx.beginPath();
-                ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y - line.length);
-                ctx.strokeStyle = line.color;
-                ctx.lineWidth = 2;
-                ctx.stroke();
+                ctx.rect(candle.x, candle.y, candle.width, candle.height * candle.direction);
+                ctx.fillStyle = candle.color;
+                ctx.fill();
 
-                line.y += line.speed;
+                candle.x += 5; // حرکت کندل‌ها به سمت راست
 
-                if (line.y > canvas.height) {
-                    line.y = 0 - line.length;
-                    line.x = Math.random() * canvas.width;
-                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
+                if (candle.x > canvas.width) {
+                    candle.x = -candle.width;
+                    candle.y = Math.random() * canvas.height;
+                    candle.height = Math.random() * 100 + 10;
+                    const isGreen = Math.random() > 0.5;
+                    candle.color = isGreen ? 'green' : 'red';
+                    candle.direction = isGreen ? 1 : -1;
                 }
             });
 
