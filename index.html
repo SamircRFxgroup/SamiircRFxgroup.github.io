@@ -55,33 +55,15 @@
             transform: translateY(-5px);
         }
 
-        .btn-hover-animate {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: #ffcc00;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
-        }
-
-        nav ul li a:hover .btn-hover-animate {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
         .hero {
             position: relative;
             height: 90vh;
-            background: url('your_bear_and_bull_image_url.jpg') no-repeat center center fixed;
+            background: url('https://yourchartanimationlink.com') no-repeat center center fixed;
             background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            background-blur: 5px;
         }
 
         .hero h2 {
@@ -89,37 +71,22 @@
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
+        }
+
+        .name-logo {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .name-logo h2 {
+            font-size: 50px; /* اندازه نام بزرگتر شد */
             margin-bottom: 10px;
         }
 
-        .hero .price-chart {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('your_price_chart_animation_url.gif') repeat;
-            animation: moveBackground 30s linear infinite;
-            opacity: 0.2;
-            z-index: -1;
-        }
-
-        .name-logo-section {
-            text-align: center;
-            padding: 30px 20px;
-            background-color: #1a1a1a;
-            width: 100%;
-            margin-top: -10px;
-        }
-
-        .name-logo-section h1 {
-            font-size: 40px;
-            color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .name-logo-section img {
-            width: 120px;
+        .name-logo img {
+            max-width: 150px; /* اندازه لوگو تنظیم شده */
             height: auto;
         }
 
@@ -127,6 +94,12 @@
             padding: 80px 20px;
             text-align: center;
             background: #1a1a1a;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section:hover {
+            background: #00ffcc;
         }
 
         .section h2 {
@@ -163,6 +136,7 @@
             background-color: #1a1a1a;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         footer p {
@@ -180,6 +154,18 @@
             color: #ffcc00;
         }
 
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://yourchartanimationlink.com') repeat;
+            animation: moveBackground 30s linear infinite;
+            opacity: 0.1;
+            z-index: -1;
+        }
+
         @keyframes moveBackground {
             0% {
                 transform: translateX(0);
@@ -189,6 +175,20 @@
             }
         }
 
+        .fadeInUp {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
 </head>
 <body>
@@ -204,21 +204,21 @@
     </header>
 
     <section class="hero">
-        <div class="price-chart"></div>
-        <h2>آموزش فارکس به صورت رایگان</h2>
+        <h2 class="fadeInUp">آموزش فارکس به صورت رایگان</h2>
+
+        <!-- اضافه کردن نام و لوگو -->
+        <div class="name-logo">
+            <h2>SamircRFxgroup</h2>
+            <img src="https://yourlogoimageurl.com" alt="Logo"> <!-- لینک به لوگو شما -->
+        </div>
     </section>
 
-    <section class="name-logo-section">
-        <h1>SamircRFxgroup</h1>
-        <img src="https://yourlogoimageurl.com" alt="Logo">
-    </section>
-
-    <section id="about" class="section">
+    <section id="about" class="section fadeInUp">
         <h2>درباره من</h2>
         <p>من پنج سال است که در بازار فارکس فعالیت دارم و هدفم این است که با آموزش‌های رایگان به شما کمک کنم تا در این بازار موفق شوید.</p>
     </section>
 
-    <section id="services" class="section">
+    <section id="services" class="section fadeInUp">
         <h2>خدمات ما</h2>
         <ul>
             <li><a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a></li>
@@ -234,5 +234,15 @@
         <p>تمامی حقوق محفوظ است | <a href="#contact">تماس با ما</a></p>
     </footer>
 
+    <div class="background-animation"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.querySelector('.background-animation');
+            setInterval(function() {
+                background.style.animationPlayState = 'running';
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
