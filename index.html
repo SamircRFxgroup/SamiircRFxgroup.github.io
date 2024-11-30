@@ -76,8 +76,24 @@
         /* آیکون‌ها */
         .social-icons {
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 20px; /* فاصله از متن */
+        }
+
+        /* آیکون‌های اینستاگرام و تیک تاک در کنار هم */
+        .social-icons-top {
+            display: flex;
             gap: 20px;
-            margin-top: 20px; /* تنظیم فاصله از متن */
+        }
+
+        /* آیکون‌های یوتیوب و تلگرام در لیست */
+        .social-icons-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
         }
 
         .social-icons a img {
@@ -124,20 +140,28 @@
         <div class="content">
             <h1>سامیر CRFx</h1>
             <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
-            <!-- آیکون‌ها در اینجا قرار داده شده‌اند -->
+            
+            <!-- آیکون‌های شبکه‌های اجتماعی -->
             <div class="social-icons">
-                <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-                </a>
-                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
-                </a>
-                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-                </a>
-                <a href="https://t.me/cRFxfamily" target="_blank">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
-                </a>
+                <!-- آیکون‌های اینستاگرام و تیک‌تاک در کنار هم -->
+                <div class="social-icons-top">
+                    <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+                    </a>
+                    <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
+                    </a>
+                </div>
+
+                <!-- آیکون‌های یوتیوب و تلگرام در پایین -->
+                <div class="social-icons-bottom">
+                    <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+                    </a>
+                    <a href="https://t.me/cRFxfamily" target="_blank">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
