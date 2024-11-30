@@ -31,45 +31,23 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px; /* اضافه کردن فاصله بین دکمه‌ها */
-        }
-
-        nav ul li {
-            position: relative;
+            gap: 20px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 16px; /* اندازه متن‌ها کوچک‌تر شد */
+            font-size: 16px;
             font-weight: bold;
             padding: 12px 25px;
-            background-color: #007f7f; /* رنگ جدید برای باکس */
+            background-color: rgba(0, 127, 127, 0.8); /* کاهش قدرت رنگ */
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* کاهش قدرت نور */
         }
 
         nav ul li a:hover {
             background-color: #ffcc00;
             transform: translateY(-5px);
-        }
-
-        .btn-hover-animate {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: #ffcc00;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
-        }
-
-        nav ul li a:hover .btn-hover-animate {
-            transform: scaleX(1);
-            transform-origin: bottom left;
         }
 
         .hero {
@@ -84,130 +62,66 @@
         }
 
         .hero h2 {
-            font-size: 40px; /* اندازه فونت هدر کاهش یافته */
+            font-size: 40px;
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
-            letter-spacing: 2px;
+        }
+
+        .name-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .name-container h3 {
+            font-size: 35px;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .name-container img {
+            width: 250px;
+            height: auto;
         }
 
         .section {
-            padding: 80px 20px;
+            padding: 50px 20px;
             text-align: center;
-            background: #1a1a1a;
-            transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow less intense */
         }
 
-        .section:hover {
-            background: #00ffcc;
+        .box-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
         }
 
-        .section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
+        .box {
+            width: 300px;
+            padding: 20px;
+            background-color: rgba(0, 127, 127, 0.8); /* کاهش شفافیت رنگ باکس */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+        .box a {
             color: #fff;
-        }
-
-        .section p {
-            font-size: 18px; /* اندازه متن کوچک‌تر شد */
-            margin-bottom: 40px;
-            color: #fff;
-        }
-
-        .section ul {
-            list-style: none;
-        }
-
-        .section ul li a {
-            color: #fff; /* White text for better readability */
-            font-size: 20px; /* اندازه متن‌ها کوچک‌تر شد */
-            display: block;
-            margin: 10px 0;
             text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .section ul li a:hover {
-            color: #ffcc00;
+            font-size: 18px;
+            font-weight: bold;
         }
 
         footer {
             background-color: #1a1a1a;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        footer p {
-            font-size: 18px;
             color: #fff;
-        }
-
-        footer a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            color: #ffcc00;
-        }
-
-        /* Background Animation for Price Chart */
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://yourchartanimationlink.com') repeat;
-            animation: moveBackground 30s linear infinite;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Fade In Animation for Sections */
-        .fadeInUp {
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* اضافه کردن استایل برای نام و لوگو */
-        .name-container {
-            margin-top: 50px; /* افزایش فاصله از بالای صفحه */
-            text-align: center;
-        }
-
-        .name-container h3 {
-            font-size: 40px; /* اندازه نام کوچک‌تر شد */
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 15px;
-        }
-
-        .name-container img {
-            width: 250px; /* اندازه لوگو بزرگ‌تر شد */
-            height: auto;
         }
     </style>
 </head>
@@ -216,53 +130,48 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#services">خدمات ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#services">خدمات ما</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h2 class="fadeInUp">آموزش فارکس به صورت رایگان</h2>
+        <h2>آموزش فارکس به صورت رایگان</h2>
     </section>
 
-    <!-- اضافه کردن نام و لوگو -->
     <div class="name-container">
         <h3>SamircRFxgroup</h3>
-        <img src="https://yourlogolink.com" alt="Logo"> <!-- لینک لوگو را به اینجا اضافه کنید -->
+        <img src="https://yourlogolink.com" alt="Logo">
     </div>
 
-    <section id="about" class="section fadeInUp">
-        <h2>درباره من</h2>
-        <p>من پنج سال است که در بازار فارکس فعالیت دارم و هدفم این است که با آموزش‌های رایگان به شما کمک کنم تا در این بازار موفق شوید.</p>
-    </section>
-
-    <section id="services" class="section fadeInUp">
+    <section id="services" class="section">
         <h2>خدمات ما</h2>
-        <ul>
-            <li><a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a></li>
-            <li><a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a></li>
-            <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
-            <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
-            <li><a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a></li>
-            <li><a href="https://t.me/Samircrfx_signal" target="_blank">سیگنال VIP</a></li>
-        </ul>
+        <div class="box-container">
+            <div class="box">
+                <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a>
+            </div>
+            <div class="box">
+                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
+            </div>
+            <div class="box">
+                <a href="https://t.me/milionersho_cRFx" target="_blank">کانال تلگرام</a>
+            </div>
+            <div class="box">
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+            </div>
+            <div class="box">
+                <a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a>
+            </div>
+            <div class="box">
+                <a href="https://t.me/Samircrfx_signal" target="_blank">ادمین دوم</a>
+            </div>
+        </div>
     </section>
 
     <footer>
         <p>تمامی حقوق محفوظ است | <a href="#contact">تماس با ما</a></p>
     </footer>
-
-    <div class="background-animation"></div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const background = document.querySelector('.background-animation');
-            setInterval(() => {
-                background.style.animationPlayState = 'running';
-            }, 1000);
-        });
-    </script>
 </body>
 </html>
