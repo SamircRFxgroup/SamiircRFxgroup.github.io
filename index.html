@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forex Chart Background</title>
+    <title>Dynamic Forex Chart Background</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden;
-            background: linear-gradient(120deg, #001f3f, #003366); /* پس‌زمینه گرادینت */
+            background: linear-gradient(120deg, #001f3f, #003366);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -22,7 +22,7 @@
             height: 100%;
         }
 
-        /* انیمیشن گرادینت پس‌زمینه */
+        /* پس‌زمینه گرادینت متحرک */
         body {
             animation: gradientBackground 10s infinite alternate;
         }
@@ -50,77 +50,67 @@
         canvas.height = window.innerHeight;
 
         const candlesticks = [];
-        const maxCandles = 100; // تعداد کندل‌ها
-        const candleWidth = 8; // عرض هر کندل
-        const spaceBetween = 10; // فاصله افقی کمتر بین کندل‌ها
+        const maxCandles = 120; // تعداد کندل‌ها
+        const candleWidth = 6; // عرض هر کندل
+        const spaceBetween = 8; // فاصله بین کندل‌ها
+        const waveAmplitude = 20; // دامنه حرکت سینوسی
 
         // ایجاد کندل جدید
         function createCandlestick() {
-            const x = candlesticks.length * (candleWidth + spaceBetween); // فاصله‌ی مرتب افقی
-            const y = Math.random() * canvas.height; // شروع تصادفی از بالا
+            const x = candlesticks.length * (candleWidth + spaceBetween); // فاصله‌ی افقی
+            const y = Math.random() * canvas.height; // موقعیت اولیه
             const open = Math.random() * 50 + y;
             const close = Math.random() * 50 + y;
             const high = Math.max(open, close) + Math.random() * 30;
             const low = Math.min(open, close) - Math.random() * 30;
             const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)'; // قرمز یا سبز
-            const speed = Math.random() * 1 + 0.5; // سرعت تصادفی برای هر کندل
-            const opacity = 1; // شفافیت اولیه
+            const speed = Math.random() * 1 + 0.8; // سرعت متغیر
+            const phase = Math.random() * Math.PI * 2; // فاز حرکت سینوسی
 
-            candlesticks.push({ x, y, open, close, high, low, color, speed, opacity });
-
-            if (candlesticks.length > maxCandles) candlesticks.shift();
+            candlesticks.push({ x, y, open, close, high, low, color, speed, phase });
         }
 
         // رسم کندل‌ها
         function drawCandlesticks() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            candlesticks.forEach(candle => {
-                ctx.beginPath();
+            candlesticks.forEach((candle, index) => {
+                const waveOffset = Math.sin((candle.x / canvas.width) * Math.PI * 2 + candle.phase) * waveAmplitude;
 
                 // رسم خط بالا و پایین
-                ctx.moveTo(candle.x, candle.high);
-                ctx.lineTo(candle.x, candle.low);
+                ctx.beginPath();
+                ctx.moveTo(candle.x, candle.high + waveOffset);
+                ctx.lineTo(candle.x, candle.low + waveOffset);
                 ctx.strokeStyle = candle.color;
                 ctx.lineWidth = 2;
-                ctx.globalAlpha = candle.opacity; // شفافیت
                 ctx.stroke();
 
                 // رسم بدنه کندل
                 ctx.fillStyle = candle.color;
                 ctx.fillRect(
                     candle.x - candleWidth / 2,
-                    Math.min(candle.open, candle.close),
+                    Math.min(candle.open, candle.close) + waveOffset,
                     candleWidth,
                     Math.abs(candle.open - candle.close)
                 );
 
-                // اضافه کردن سایه‌ی نور
-                ctx.beginPath();
-                ctx.arc(candle.x, Math.min(candle.open, candle.close) + Math.abs(candle.open - candle.close) / 2, 5, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 255, 255, 0.1)`;
-                ctx.fill();
-
                 // حرکت کندل‌ها به سمت چپ
                 candle.x -= candle.speed;
 
-                // کاهش شفافیت برای کندل‌های نزدیک به لبه
-                if (candle.x < canvas.width / 4) {
-                    candle.opacity -= 0.005;
+                // حذف کندل‌هایی که از صفحه خارج می‌شوند
+                if (candle.x < -candleWidth) {
+                    candlesticks.splice(index, 1);
                 }
             });
 
-            // حذف کندل‌هایی که از صفحه خارج می‌شوند
-            if (candlesticks.length && candlesticks[0].x < -candleWidth) {
-                candlesticks.shift();
+            // اضافه کردن کندل جدید
+            if (candlesticks.length < canvas.width / (candleWidth + spaceBetween)) {
+                createCandlestick();
             }
         }
 
         // حلقه انیمیشن
         function animate() {
-            if (candlesticks.length < canvas.width / (candleWidth + spaceBetween)) {
-                createCandlestick();
-            }
             drawCandlesticks();
             requestAnimationFrame(animate);
         }
