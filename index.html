@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Forex Chart Background</title>
+    <title>Dynamic Forex Chart with Patterns</title>
     <style>
         body, html {
             margin: 0;
@@ -22,7 +22,6 @@
             height: 100%;
         }
 
-        /* پس‌زمینه گرادینت متحرک */
         body {
             animation: gradientBackground 10s infinite alternate;
         }
@@ -50,22 +49,48 @@
         canvas.height = window.innerHeight;
 
         const candlesticks = [];
-        const maxCandles = 120; // تعداد کندل‌ها
-        const candleWidth = 6; // عرض هر کندل
-        const spaceBetween = 8; // فاصله بین کندل‌ها
-        const waveAmplitude = 20; // دامنه حرکت سینوسی
+        const maxCandles = 100;
+        const candleWidth = 6;
+        const spaceBetween = 8;
+        const waveAmplitude = 20;
 
         // ایجاد کندل جدید
         function createCandlestick() {
-            const x = candlesticks.length * (candleWidth + spaceBetween); // فاصله‌ی افقی
-            const y = Math.random() * canvas.height; // موقعیت اولیه
+            const x = candlesticks.length * (candleWidth + spaceBetween);
+            const y = Math.random() * canvas.height;
             const open = Math.random() * 50 + y;
             const close = Math.random() * 50 + y;
             const high = Math.max(open, close) + Math.random() * 30;
             const low = Math.min(open, close) - Math.random() * 30;
-            const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)'; // قرمز یا سبز
-            const speed = Math.random() * 1 + 0.8; // سرعت متغیر
-            const phase = Math.random() * Math.PI * 2; // فاز حرکت سینوسی
+            const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)';
+            const speed = Math.random() * 1 + 0.8;
+            const phase = Math.random() * Math.PI * 2;
+
+            // ایجاد کندل خاص (الگوها)
+            const patternChance = Math.random();
+            if (patternChance < 0.1) {
+                // Doji
+                close = open;
+                high = close + 10;
+                low = close - 10;
+            } else if (patternChance < 0.2) {
+                // Hammer
+                high = open + 5;
+                low = close - 30;
+            } else if (patternChance < 0.3) {
+                // Shooting Star
+                low = close - 5;
+                high = open + 30;
+            } else if (patternChance < 0.4) {
+                // Engulfing
+                const prevCandle = candlesticks[candlesticks.length - 1];
+                if (prevCandle) {
+                    open = prevCandle.close - 20;
+                    close = prevCandle.open + 20;
+                    high = Math.max(open, close) + 10;
+                    low = Math.min(open, close) - 10;
+                }
+            }
 
             candlesticks.push({ x, y, open, close, high, low, color, speed, phase });
         }
@@ -77,7 +102,6 @@
             candlesticks.forEach((candle, index) => {
                 const waveOffset = Math.sin((candle.x / canvas.width) * Math.PI * 2 + candle.phase) * waveAmplitude;
 
-                // رسم خط بالا و پایین
                 ctx.beginPath();
                 ctx.moveTo(candle.x, candle.high + waveOffset);
                 ctx.lineTo(candle.x, candle.low + waveOffset);
@@ -85,7 +109,6 @@
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
-                // رسم بدنه کندل
                 ctx.fillStyle = candle.color;
                 ctx.fillRect(
                     candle.x - candleWidth / 2,
@@ -94,28 +117,23 @@
                     Math.abs(candle.open - candle.close)
                 );
 
-                // حرکت کندل‌ها به سمت چپ
                 candle.x -= candle.speed;
 
-                // حذف کندل‌هایی که از صفحه خارج می‌شوند
                 if (candle.x < -candleWidth) {
                     candlesticks.splice(index, 1);
                 }
             });
 
-            // اضافه کردن کندل جدید
             if (candlesticks.length < canvas.width / (candleWidth + spaceBetween)) {
                 createCandlestick();
             }
         }
 
-        // حلقه انیمیشن
         function animate() {
             drawCandlesticks();
             requestAnimationFrame(animate);
         }
 
-        // شروع انیمیشن
         animate();
     </script>
 </body>
