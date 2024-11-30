@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Forex Chart with Patterns</title>
+    <title>Dynamic Forex Chart with Price Action Patterns</title>
     <style>
         body, html {
             margin: 0;
@@ -54,7 +54,7 @@
         const spaceBetween = 8;
         const waveAmplitude = 20;
 
-        // ایجاد کندل جدید
+        // ایجاد کندل جدید با احتمال برای الگوهای قیمتی
         function createCandlestick() {
             const x = candlesticks.length * (candleWidth + spaceBetween);
             const y = Math.random() * canvas.height;
@@ -66,7 +66,7 @@
             const speed = Math.random() * 1 + 0.8;
             const phase = Math.random() * Math.PI * 2;
 
-            // ایجاد کندل خاص (الگوها)
+            // ایجاد کندل خاص (الگوهای پرایس اکشن)
             const patternChance = Math.random();
             if (patternChance < 0.1) {
                 // Doji
@@ -74,15 +74,15 @@
                 high = close + 10;
                 low = close - 10;
             } else if (patternChance < 0.2) {
-                // Hammer
+                // Hammer (چکش)
                 high = open + 5;
                 low = close - 30;
             } else if (patternChance < 0.3) {
-                // Shooting Star
+                // Shooting Star (شهاب سنگ)
                 low = close - 5;
                 high = open + 30;
             } else if (patternChance < 0.4) {
-                // Engulfing
+                // Engulfing (پوشا)
                 const prevCandle = candlesticks[candlesticks.length - 1];
                 if (prevCandle) {
                     open = prevCandle.close - 20;
