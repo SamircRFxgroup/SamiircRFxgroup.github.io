@@ -194,19 +194,19 @@
 
         /* اضافه کردن استایل برای نام و لوگو */
         .name-container {
-            margin-top: 30px;
+            margin-top: 50px; /* افزایش فاصله از بالای صفحه */
             text-align: center;
         }
 
         .name-container h3 {
-            font-size: 50px; /* اندازه نام کمی کوچک‌تر شد */
+            font-size: 40px; /* اندازه نام کوچک‌تر شد */
             color: #fff;
             text-transform: uppercase;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .name-container img {
-            width: 200px; /* اندازه لوگو بزرگ‌تر شد */
+            width: 250px; /* اندازه لوگو بزرگ‌تر شد */
             height: auto;
         }
     </style>
@@ -259,7 +259,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const background = document.querySelector('.background-animation');
-            setInterval(function() {
+            setInterval(() => {
                 background.style.animationPlayState = 'running';
             }, 1000);
         });
