@@ -142,6 +142,33 @@
         .social-icons a img:hover {
             transform: scale(1.2);
         }
+
+        /* استایل باکس‌های "درباره من" و "خدمات ما" */
+        .info-box {
+            background-color: rgba(0, 255, 204, 0.1);
+            border: 2px solid #00ffcc;
+            padding: 30px;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 255, 204, 0.4);
+            transition: 0.3s;
+        }
+
+        .info-box:hover {
+            background-color: rgba(0, 255, 204, 0.2);
+            box-shadow: 0px 4px 20px rgba(0, 255, 204, 0.6);
+        }
+
+        .info-box h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #00ffcc;
+        }
+
+        .info-box p {
+            font-size: 16px;
+            color: #ddd;
+        }
     </style>
 </head>
 <body>
@@ -173,17 +200,21 @@
     </section>
 
     <section id="about">
-        <h2>درباره من</h2>
-        <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+        <div class="info-box">
+            <h2>درباره من</h2>
+            <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+        </div>
     </section>
 
     <section id="services">
-        <h2>خدمات ما</h2>
-        <ul>
-            <li>آموزش رایگان فارکس</li>
-            <li>سیگنال‌های حرفه‌ای و VIP</li>
-            <li>پشتیبانی و ارتباط با ادمین</li>
-        </ul>
+        <div class="info-box">
+            <h2>خدمات ما</h2>
+            <ul>
+                <li>آموزش رایگان فارکس</li>
+                <li>سیگنال‌های حرفه‌ای و VIP</li>
+                <li>پشتیبانی و ارتباط با ادمین</li>
+            </ul>
+        </div>
     </section>
 
     <footer>
@@ -213,37 +244,14 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
-        const lines = [];
-        for (let i = 0; i < 30; i++) {
-            lines.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                length: Math.random() * 150 + 50,
-                speed: Math.random() * 2 + 0.5,
-                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
-            });
-        }
-
         function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            lines.forEach(line => {
-                ctx.beginPath();
-                ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y - line.length);
-                ctx.strokeStyle = line.color;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                line.y += line.speed;
-
-                if (line.y > canvas.height) {
-                    line.y = 0 - line.length;
-                    line.x = Math.random() * canvas.width;
-                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
-                }
-            });
+            // رسم الگو
+            ctx.fillStyle = 'rgba(0, 255, 204, 0.6)';
+            ctx.beginPath();
+            ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 5 + 1, 0, Math.PI * 2);
+            ctx.fill();
 
             requestAnimationFrame(drawBackground);
         }
