@@ -46,22 +46,6 @@
             color: #fff;
         }
 
-        /* اضافه کردن آیکون‌های شبکه‌های اجتماعی */
-        .social-icons {
-            display: flex;
-            gap: 10px;
-        }
-
-        .social-icons a img {
-            width: 30px;
-            height: 30px;
-            transition: 0.3s;
-        }
-
-        .social-icons a img:hover {
-            transform: scale(1.1);
-        }
-
         section {
             padding: 100px 20px;
             text-align: center;
@@ -129,6 +113,27 @@
             height: 100%;
             z-index: 0;
         }
+
+        /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 20;
+        }
+
+        .social-icons a img {
+            width: 40px;
+            height: 40px;
+            transition: 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -140,17 +145,6 @@
                 <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-            </a>
-            <a href="https://t.me/milionersho_cRFx" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
-            </a>
-            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-            </a>
-        </div>
     </header>
 
     <section id="hero">
@@ -183,6 +177,18 @@
     <footer>
         <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
     </footer>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+        </a>
+        <a href="https://t.me/milionersho_cRFx" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+        </a>
+        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+        </a>
+    </div>
 
     <script>
         const canvas = document.getElementById('bgCanvas');
