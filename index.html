@@ -31,7 +31,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 20px; /* اضافه کردن فاصله بین دکمه‌ها */
         }
 
         nav ul li {
@@ -41,18 +41,35 @@
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 16px; /* اندازه متن‌ها کوچک‌تر شد */
             font-weight: bold;
             padding: 12px 25px;
-            background-color: #007f7f;
+            background-color: #007f7f; /* رنگ جدید برای باکس */
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* کاهش قدرت نور */
         }
 
         nav ul li a:hover {
             background-color: #ffcc00;
             transform: translateY(-5px);
+        }
+
+        .btn-hover-animate {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover .btn-hover-animate {
+            transform: scaleX(1);
+            transform-origin: bottom left;
         }
 
         .hero {
@@ -61,32 +78,16 @@
             background: url('https://yourchartanimationlink.com') no-repeat center center fixed;
             background-size: cover;
             display: flex;
-            flex-direction: column; /* تغییر به ترتیب عمودی */
             justify-content: center;
             align-items: center;
             text-align: center;
         }
 
         .hero h2 {
-            font-size: 50px; /* اندازه بزرگتر برای نام */
+            font-size: 40px; /* اندازه فونت هدر کاهش یافته */
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
-            margin-bottom: 20px; /* فاصله بین نام و لوگو */
-        }
-
-        .name-logo {
-            text-align: center;
-        }
-
-        .name-logo h2 {
-            font-size: 50px; /* اندازه نام بزرگتر شد */
-            margin-bottom: 10px;
-        }
-
-        .name-logo img {
-            max-width: 150px; /* اندازه لوگو تنظیم شده */
-            height: auto;
         }
 
         .section {
@@ -94,7 +95,7 @@
             text-align: center;
             background: #1a1a1a;
             transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow less intense */
         }
 
         .section:hover {
@@ -108,7 +109,7 @@
         }
 
         .section p {
-            font-size: 18px;
+            font-size: 18px; /* اندازه متن کوچک‌تر شد */
             margin-bottom: 40px;
             color: #fff;
         }
@@ -118,8 +119,8 @@
         }
 
         .section ul li a {
-            color: #fff;
-            font-size: 20px;
+            color: #fff; /* White text for better readability */
+            font-size: 20px; /* اندازه متن‌ها کوچک‌تر شد */
             display: block;
             margin: 10px 0;
             text-decoration: none;
@@ -153,6 +154,7 @@
             color: #ffcc00;
         }
 
+        /* Background Animation for Price Chart */
         .background-animation {
             position: absolute;
             top: 0;
@@ -174,6 +176,7 @@
             }
         }
 
+        /* Fade In Animation for Sections */
         .fadeInUp {
             animation: fadeInUp 1s ease-in-out;
         }
@@ -188,6 +191,24 @@
                 transform: translateY(0);
             }
         }
+
+        /* اضافه کردن استایل برای نام و لوگو */
+        .name-container {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .name-container h3 {
+            font-size: 60px; /* اندازه نام بزرگ‌تر */
+            color: #fff;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .name-container img {
+            width: 150px; /* اندازه لوگو */
+            height: auto;
+        }
     </style>
 </head>
 <body>
@@ -195,22 +216,22 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما</a></li>
-                <li><a href="#about">درباره من</a></li>
-                <li><a href="#services">خدمات ما</a></li>
+                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات ما <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero">
-        <h2>آموزش فارکس به صورت رایگان</h2>
-
-        <!-- اضافه کردن نام و لوگو -->
-        <div class="name-logo">
-            <h2>SamircRFxgroup</h2>
-            <img src="https://yourlogoimageurl.com" alt="Logo"> <!-- لینک به لوگو شما -->
-        </div>
+        <h2 class="fadeInUp">آموزش فارکس به صورت رایگان</h2>
     </section>
+
+    <!-- اضافه کردن نام و لوگو -->
+    <div class="name-container">
+        <h3>SamircRFxgroup</h3>
+        <img src="https://yourlogolink.com" alt="Logo"> <!-- لینک لوگو را به اینجا اضافه کنید -->
+    </div>
 
     <section id="about" class="section fadeInUp">
         <h2>درباره من</h2>
