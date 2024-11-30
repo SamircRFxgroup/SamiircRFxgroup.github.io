@@ -73,37 +73,34 @@
             margin-bottom: 20px;
         }
 
-        /* آیکون‌ها */
-        .social-icons {
+        /* دکمه‌ها */
+        #hero .buttons {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
-            margin-top: 20px; /* فاصله از متن */
+            gap: 20px;
         }
 
-        /* آیکون‌های اینستاگرام و تیک تاک در کنار هم */
-        .social-icons-top {
+        /* برای قرار دادن دکمه‌های اینستاگرام و تیک تاک در کنار هم */
+        #hero .buttons-row {
             display: flex;
             gap: 20px;
         }
 
-        /* آیکون‌های یوتیوب و تلگرام در لیست */
-        .social-icons-bottom {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .social-icons a img {
-            width: 60px; /* سایز بزرگتر آیکون */
-            height: 60px; /* سایز بزرگتر آیکون */
+        #hero .buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
             transition: 0.3s;
         }
 
-        .social-icons a img:hover {
-            transform: scale(1.2);
+        #hero .buttons a:hover {
+            background-color: #fff;
+            color: #00ffcc;
         }
 
         footer {
@@ -122,6 +119,26 @@
             z-index: 0;
         }
 
+        /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
+        .social-icons {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 20;
+        }
+
+        .social-icons a img {
+            width: 40px;
+            height: 40px;
+            transition: 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2);
+        }
     </style>
 </head>
 <body>
@@ -140,28 +157,14 @@
         <div class="content">
             <h1>سامیر CRFx</h1>
             <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
-            
-            <!-- آیکون‌های شبکه‌های اجتماعی -->
-            <div class="social-icons">
-                <!-- آیکون‌های اینستاگرام و تیک‌تاک در کنار هم -->
-                <div class="social-icons-top">
-                    <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-                    </a>
-                    <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
-                    </a>
+            <div class="buttons">
+                <!-- دکمه‌ها در ردیف کنار هم قرار می‌گیرند -->
+                <div class="buttons-row">
+                    <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a>
+                    <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">تیک‌تاک</a>
                 </div>
-
-                <!-- آیکون‌های یوتیوب و تلگرام در پایین -->
-                <div class="social-icons-bottom">
-                    <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-                    </a>
-                    <a href="https://t.me/cRFxfamily" target="_blank">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
-                    </a>
-                </div>
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+                <a href="https://t.me/cRFxfamily" target="_blank">تلگرام</a>
             </div>
         </div>
     </section>
@@ -183,6 +186,21 @@
     <footer>
         <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
     </footer>
+
+    <div class="social-icons">
+        <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+        </a>
+        <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
+        </a>
+        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+        </a>
+        <a href="https://t.me/cRFxfamily" target="_blank">
+            <img src="https://upload.wikedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+        </a>
+    </div>
 
     <script>
         const canvas = document.getElementById('bgCanvas');
