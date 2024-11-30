@@ -60,6 +60,7 @@
             justify-content: center;
             align-items: center;
             position: relative;
+            z-index: 2; /* قرار دادن متن و دکمه‌ها بالاتر از پس‌زمینه */
         }
 
         #hero .content h1 {
@@ -117,7 +118,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* پس‌زمینه باید زیر دکمه‌ها باشد */
+            z-index: -1; /* پس‌زمینه باید پشت کلمات و دکمه‌ها باشد */
         }
 
         /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
@@ -132,13 +133,13 @@
         }
 
         .social-icons a img {
-            width: 40px;
-            height: 40px;
+            width: 60px;  /* سایز بزرگتر برای آیکون‌ها */
+            height: 60px; /* سایز بزرگتر برای آیکون‌ها */
             transition: 0.3s;
         }
 
         .social-icons a img:hover {
-            transform: scale(1.2);
+            transform: scale(1.3); /* بزرگتر شدن هنگام hover */
         }
     </style>
 </head>
@@ -219,23 +220,25 @@
                 y: Math.random() * canvas.height,
                 length: Math.random() * 150 + 50,
                 speed: Math.random() * 2 + 0.5,
-                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز و سبز
             });
         }
 
+        // رسم پس‌زمینه متحرک
         function drawBackground() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // پاک کردن صفحه
 
             lines.forEach(line => {
                 ctx.beginPath();
                 ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y - line.length);
+                ctx.lineTo(line.x, line.y + line.length);
                 ctx.strokeStyle = line.color;
                 ctx.lineWidth = 2;
                 ctx.stroke();
 
                 line.y += line.speed;
 
+                // بازگشت خط به بالای صفحه
                 if (line.y > canvas.height) {
                     line.y = 0;
                 }
