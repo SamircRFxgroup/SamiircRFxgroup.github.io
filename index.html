@@ -3,267 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وب‌سایت من</title>
+    <title>سامیر CRFx | بازار فارکس</title>
     <style>
-        /* استایل پایه سایت */
-        * {
+        /* استایل عمومی */
+        body {
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
             font-family: 'Arial', sans-serif;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
         }
 
-        /* استایل هدر */
-        .header {
+        header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #111;
             padding: 20px;
-            color: #fff;
+            background: rgba(0, 0, 0, 0.8);
             position: fixed;
-            top: 0;
             width: 100%;
             z-index: 10;
         }
 
-        .header .logo-img {
+        header .logo img {
             width: 120px;
+            display: none; /* پنهان کردن لوگو در بخش header */
         }
 
-        .nav-list {
+        header nav ul {
             list-style: none;
             display: flex;
+            gap: 20px;
         }
 
-        .nav-list li {
-            margin-left: 20px;
-        }
-
-        .nav-link {
-            color: #fff;
+        header nav ul li a {
             text-decoration: none;
-            font-size: 18px;
-            transition: color 0.3s;
-        }
-
-        .nav-link:hover {
             color: #00ffcc;
+            font-size: 18px;
+            transition: 0.3s;
         }
 
-        /* بخش Hero */
-        .hero {
-            height: 100vh;
-            background-color: #000;
+        header nav ul li a:hover {
+            color: #fff;
+        }
+
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        #hero {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            color: #fff;
-            text-align: center;
-            padding: 100px 20px;
-            background-image: url('background_image_url'); /* جایگزین با آدرس تصویر پس‌زمینه */
-            background-size: cover;
-            background-position: center;
+            position: relative;
+            background: #000;
+            z-index: 1;
         }
 
-        .hero h1 {
+        #hero .content {
+            z-index: 1;
+        }
+
+        #hero .content h1 {
             font-size: 48px;
-            margin-bottom: 20px;
-            animation: fadeIn 3s ease-in-out;
+            margin-bottom: 10px;
+            text-shadow: 0px 0px 10px #00ffcc;
         }
 
-        .hero p {
+        #hero .content p {
             font-size: 20px;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
-        .cta-buttons a {
+        /* لیست دکمه‌ها */
+        #hero .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #hero .buttons a {
             display: inline-block;
             padding: 15px 30px;
             margin: 10px;
             background-color: #00ffcc;
-            color: #fff;
+            color: #000;
             text-decoration: none;
             border-radius: 5px;
             font-size: 18px;
-            transition: background-color 0.3s;
+            transition: 0.3s;
         }
 
-        .cta-buttons a:hover {
+        #hero .buttons a:hover {
             background-color: #fff;
             color: #00ffcc;
         }
 
-        /* انیمیشن برای متن */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* استایل برای شبکه‌های اجتماعی */
-        .social-links {
-            padding: 50px 20px;
-            background-color: #111;
-            text-align: center;
-        }
-
-        .social-icons {
-            display: flex;
-            justify-content: center;
+        #logo-footer {
             margin-top: 20px;
         }
 
-        .social-icon {
-            margin: 0 15px;
-            color: #fff;
-            font-size: 24px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .social-icon:hover {
-            color: #00ffcc;
-        }
-
-        /* استایل بخش تماس */
-        .contact {
-            background-color: #333;
-            color: #fff;
-            padding: 50px 20px;
-            text-align: center;
-        }
-
-        .admin-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .admin-link {
-            margin: 0 15px;
-            color: #fff;
-            font-size: 20px;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .admin-link:hover {
-            color: #00ffcc;
-        }
-
-        /* استایل فوتر */
         footer {
-            background-color: #111;
-            color: #fff;
             text-align: center;
             padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            font-size: 14px;
         }
 
-        /* طراحی واکنش‌گرا */
-        @media (max-width: 768px) {
-            .nav-list {
-                flex-direction: column;
-                align-items: center;
-            }
+        #bgCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
 
-            .hero h1 {
-                font-size: 36px;
-            }
+        section {
+            padding: 50px 20px;
+        }
 
-            .cta-buttons a {
-                padding: 12px 25px;
-                font-size: 16px;
-            }
-
-            .social-icons {
-                flex-direction: column;
-            }
+        /* کاهش فاصله بین بخش‌ها */
+        #about, #services {
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
-
-    <!-- بخش هدر -->
-    <header class="header">
+    <header>
         <div class="logo">
-            <!-- استفاده از لینک لوگوی شما -->
-            <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/logo.png" alt="لوگو شما" class="logo-img">
+            <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx">
         </div>
         <nav>
-            <ul class="nav-list">
-                <li><a href="#home" class="nav-link">خانه</a></li>
-                <li><a href="#about" class="nav-link">درباره من</a></li>
-                <li><a href="#social" class="nav-link">شبکه‌های اجتماعی</a></li>
-                <li><a href="#contact" class="nav-link">تماس با من</a></li>
+            <ul>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- بخش معرفی -->
-    <section id="home" class="hero">
-        <div class="hero-text">
-            <h1>سلام! من 5 سال است که در بازار فارکس فعالیت دارم</h1>
-            <p>برای آموزش‌های رایگان به کانال‌های من در شبکه‌های اجتماعی مراجعه کنید.</p>
-            <div class="cta-buttons">
-                <a href="https://www.instagram.com/samircrfxgroup" class="cta-btn">اینستاگرام</a>
-                <a href="https://t.me/milionersho_cRFx" class="cta-btn">تلگرام</a>
-                <a href="https://www.youtube.com/@Samircrfxgroup" class="cta-btn">یوتیوب</a>
+    <section id="hero">
+        <canvas id="bgCanvas"></canvas>
+        <div class="content">
+            <h1>سامیر CRFx</h1>
+            <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
+            <div class="buttons">
+                <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
+                <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
             </div>
         </div>
-    </section>
-
-    <!-- بخش شبکه‌های اجتماعی -->
-    <section id="social" class="social-links">
-        <h2>به شبکه‌های اجتماعی من بپیوندید</h2>
-        <div class="social-icons">
-            <a href="https://www.instagram.com/samircrfxgroup" class="social-icon">اینستاگرام</a>
-            <a href="https://t.me/milionersho_cRFx" class="social-icon">تلگرام</a>
-            <a href="https://www.youtube.com/@Samircrfxgroup" class="social-icon">یوتیوب</a>
+        <div id="logo-footer">
+            <img src="https://github.com/27f925c9-4db3-4a1c-a216-17ff933e7b4d/raw/main/logo.png" alt="لوگوی سامیر CRFx" width="100">
         </div>
     </section>
 
-    <!-- بخش تماس -->
-    <section id="contact" class="contact">
-        <h2>تماس با من</h2>
-        <p>برای دریافت سیگنال‌ها و مشاوره، با ادمین‌های ما در تلگرام ارتباط برقرار کنید:</p>
-        <div class="admin-links">
-            <a href="https://t.me/cRFxfamily" class="admin-link">ادمین اول</a>
-            <a href="https://t.me/Samircrfx_signal" class="admin-link">ادمین دوم (سیگنال VIP)</a>
-        </div>
+    <section id="about">
+        <h2>درباره من</h2>
+        <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+    </section>
+
+    <section id="services">
+        <h2>خدمات ما</h2>
+        <ul>
+            <li>آموزش رایگان فارکس</li>
+            <li>سیگنال‌های حرفه‌ای و VIP</li>
+            <li>پشتیبانی و ارتباط با ادمین</li>
+        </ul>
     </section>
 
     <footer>
-        <p>&copy; 2024 Samir CRFx</p>
+        <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
     </footer>
 
     <script>
-        // کد جاوا اسکریپت برای انیمیشن‌ها و تعاملات
-        document.addEventListener('DOMContentLoaded', function () {
-            // انیمیشن ورود لوگو
-            const logo = document.querySelector('.logo-img');
-            logo.classList.add('fadeIn');
-            
-            // انیمیشن دکمه‌ها
-            const buttons = document.querySelectorAll('.cta-btn');
-            buttons.forEach(button => {
-                button.addEventListener('mouseover', function() {
-                    button.style.backgroundColor = '#fff';
-                    button.style.color = '#00ffcc';
-                });
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
 
-                button.addEventListener('mouseout', function() {
-                    button.style.backgroundColor = '#00ffcc';
-                    button.style.color = '#fff';
-                });
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
+        const lines = [];
+        for (let i = 0; i < 30; i++) {
+            lines.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
             });
+        }
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            lines.forEach(line => {
+                ctx.beginPath();
+                ctx.moveTo(line.x, line.y);
+                ctx.lineTo(line.x, line.y - line.length);
+                ctx.strokeStyle = line.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                line.y += line.speed;
+
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
+                }
+            });
+
+            requestAnimationFrame(drawBackground);
+        }
+
+        // تنظیم مجدد اندازه
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
+
+        drawBackground();
     </script>
 </body>
 </html>
-``
