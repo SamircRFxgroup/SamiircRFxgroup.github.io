@@ -76,23 +76,20 @@
         /* دکمه‌ها */
         #hero .buttons {
             display: flex;
-            flex-direction: column; /* به صورت ستونی */
+            flex-direction: column;
             align-items: center;
             gap: 20px;
         }
 
-        /* برای ردیفی کردن دکمه‌های اینستاگرام و تیک تاک */
-        .social-buttons {
+        /* برای قرار دادن دکمه‌های اینستاگرام و تیک تاک در کنار هم */
+        #hero .buttons-row {
             display: flex;
-            gap: 20px; /* فاصله بین دکمه‌ها */
-            justify-content: center;
-            align-items: center;
+            gap: 20px;
         }
 
         #hero .buttons a {
             display: inline-block;
             padding: 15px 30px;
-            margin: 10px;
             background-color: #00ffcc;
             color: #000;
             text-decoration: none;
@@ -161,8 +158,8 @@
             <h1>سامیر CRFx</h1>
             <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
             <div class="buttons">
-                <!-- دکمه‌های اینستاگرام و تیک تاک در کنار هم -->
-                <div class="social-buttons">
+                <!-- دکمه‌ها در ردیف کنار هم قرار می‌گیرند -->
+                <div class="buttons-row">
                     <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
                     <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roOWIflDro&_r=1" target="_blank">تیک‌تاک</a>
                 </div>
@@ -213,16 +210,15 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خط‌های نوار مانند با حرکت
-        let lines = [];
-        for (let i = 0; i < 100; i++) {
+        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
+        const lines = [];
+        for (let i = 0; i < 30; i++) {
             lines.push({
-                x: i * 10,
+                x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                width: 2,
-                height: Math.random() * 100 + 10,
-                color: `rgba(0, 255, 204, 0.5)`,
-                speed: Math.random() * 3 + 1
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
             });
         }
 
@@ -232,17 +228,17 @@
             lines.forEach(line => {
                 ctx.beginPath();
                 ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y + line.height);
+                ctx.lineTo(line.x, line.y - line.length);
                 ctx.strokeStyle = line.color;
-                ctx.lineWidth = line.width;
+                ctx.lineWidth = 2;
                 ctx.stroke();
 
-                line.x += line.speed; // حرکت خط‌ها به سمت راست
+                line.y += line.speed;
 
-                if (line.x > canvas.width) {
-                    line.x = -line.width;
-                    line.y = Math.random() * canvas.height;
-                    line.height = Math.random() * 100 + 10;
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
                 }
             });
 
