@@ -153,6 +153,31 @@
             font-size: 22px; /* سایز بزرگتر برای متن‌ها */
             line-height: 1.6;
         }
+
+        /* استایل دکمه‌های ادمین‌ها */
+        .admin-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 40px;
+            align-items: center;
+        }
+
+        .admin-buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .admin-buttons a:hover {
+            background-color: #fff;
+            color: #00ffcc;
+        }
     </style>
 </head>
 <body>
@@ -186,6 +211,12 @@
     <section id="about">
         <h2>درباره من</h2>
         <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+
+        <!-- دکمه‌های ادمین‌ها -->
+        <div class="admin-buttons">
+            <a href="https://t.me/cRFxfamily" target="_blank">ادمین کلاپ میلیونرها</a>
+            <a href="https://t.me/Samircrfx_signal" target="_blank">ادمین عضویت به کانال VIP رایگان</a>
+        </div>
     </section>
 
     <section id="services">
@@ -208,37 +239,36 @@
         <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
         </a>
-        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-        </a>
         <a href="https://t.me/cRFxfamily" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/8/84/Telegram.svg" alt="تلگرام">
+        </a>
+        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
         </a>
     </div>
 
     <script>
+        // اینجا کد جاوااسکریپت برای پس‌زمینه متحرک قرار دارد
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
 
-        // تنظیم ابعاد canvas
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
         const lines = [];
-        for (let i = 0; i < 30; i++) {
+
+        for (let i = 0; i < 100; i++) {
             lines.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                length: Math.random() * 150 + 50,
+                length: Math.random() * 10 + 10,
                 speed: Math.random() * 2 + 0.5,
                 color: Math.random() > 0.5 ? '#00ffcc' : '#ff3333',
             });
         }
 
-        // رسم پس‌زمینه متحرک
         function drawBackground() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height); // پاک کردن صفحه
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             lines.forEach(line => {
                 ctx.beginPath();
@@ -250,7 +280,6 @@
 
                 line.y += line.speed;
 
-                // بازگشت خط به بالای صفحه
                 if (line.y > canvas.height) {
                     line.y = 0;
                 }
