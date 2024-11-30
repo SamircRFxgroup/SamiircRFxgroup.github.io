@@ -179,7 +179,7 @@
 <body>
     <header>
         <!-- لوگوی جدید شما -->
-        <div><img src="https://github.com/f2cb709f-e68e-4550-b976-f668b53b6efa/raw/main/logo.png" alt="لوگو" class="logo"></div>
+        <div><img src="https://raw.githubusercontent.com/f2cb709f-e68e-4550-b976-f668b53b6efa/main/logo.png" alt="لوگو" class="logo"></div>
         <nav>
             <ul>
                 <li><a href="#about">درباره من</a></li>
@@ -201,7 +201,7 @@
             </div>
         </div>
         <div id="logo-footer">
-            <img src="https://github.com/f2cb709f-e68e-4550-b976-f668b53b6efa/raw/main/logo.png" alt="لوگوی سامیر CRFx" width="100">
+            <img src="https://raw.githubusercontent.com/f2cb709f-e68e-4550-b976-f668b53b6efa/main/logo.png" alt="لوگوی سامیر CRFx" width="100">
         </div>
     </section>
 
@@ -244,27 +244,18 @@
 
         function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-
             lines.forEach(line => {
                 ctx.beginPath();
                 ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y - line.length);
+                ctx.lineTo(line.x + line.length, line.y + line.length);
                 ctx.strokeStyle = line.color;
-                ctx.lineWidth = 2;
                 ctx.stroke();
-
-                line.y += line.speed;
-
-                if (line.y > canvas.height) {
-                    line.y = 0 - line.length;
-                    line.x = Math.random() * canvas.width;
-                }
+                line.x += line.speed;
+                if (line.x > canvas.width) line.x = 0;
             });
-
             requestAnimationFrame(drawBackground);
         }
 
-        // تنظیم مجدد اندازه
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
