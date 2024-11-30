@@ -1,236 +1,177 @@
-<!DOCTYPE html>
-<html lang="fa">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سایت فارکس سامیر CRFx</title>
-    <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            font-family: 'Arial', sans-serif;
-        }
-
-        /* پس‌زمینه چارت قیمت متحرک */
-        .background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
-
-        canvas {
-            width: 100%;
-            height: 100%;
-        }
-
-        /* استایل کلی */
-        header {
-            background-color: rgba(0, 0, 0, 0.6);
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .header-links {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .header-links a {
-            text-decoration: none;
-            color: #00ffcc;
-            font-size: 18px;
-            padding: 10px;
-            transition: color 0.3s;
-        }
-
-        .header-links a:hover {
-            color: #fff;
-        }
-
-        .footer-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        footer {
-            background-color: #111;
-            color: #fff;
-            text-align: center;
-            font-size: 16px;
-            padding: 50px 20px;
-        }
-
-        .footer-logo {
-            flex: 1;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            width: 150px;
-            height: auto;
-        }
-
-        .footer-links {
-            flex: 1;
-            text-align: center;
-        }
-
-        .footer-links h3 {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .footer-links ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links ul li a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links ul li a:hover {
-            color: #fff;
-        }
-
-        .footer-info {
-            flex: 1;
-            text-align: center;
-        }
-
-        .footer-info p {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-    </style>
-</head>
-<body>
-
-    <!-- پس‌زمینه متحرک -->
-    <div class="background">
-        <canvas id="priceChart"></canvas>
+<!-- فوتر سایت -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <img src="https://raw.githubusercontent.com/f2cb709f-e68e-4550-b976-f668b53b6efa/main/logo.png" alt="لوگوی سامیر CRFx" class="footer-logo-img">
+        </div>
+        <div class="footer-links">
+            <h3>ارتباط با ما</h3>
+            <ul>
+                <li><a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a></li>
+                <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
+                <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
+            </ul>
+        </div>
+        <div class="footer-info">
+            <p>۵ سال تجربه در بازار فارکس | سامیر CRFx</p>
+        </div>
     </div>
+</footer>
 
-    <!-- هدر سایت -->
-    <header>
-        <div class="header-links">
-            <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
-            <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
-            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
-            <a href="https://t.me/cRFxfamily" target="_blank">تماس با ما</a>
-        </div>
-    </header>
+<!-- پس‌زمینه متحرک -->
+<div class="background">
+    <canvas id="priceChart"></canvas>
+</div>
 
-    <!-- اطلاعات در مورد برند و خدمات -->
-    <section style="text-align: center; padding: 40px 20px;">
-        <h1>خوش آمدید به سایت سامیر CRFx</h1>
-        <p>۵ سال تجربه در بازار فارکس | خدمات آموزشی و سیگنال‌های رایگان</p>
-    </section>
+<style>
+    /* پس‌زمینه چارت قیمت متحرک */
+    .background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+    }
 
-    <!-- فوتر سایت -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-logo">
-                <img src="https://raw.githubusercontent.com/f2cb709f-e68e-4550-b976-f668b53b6efa/main/logo.png" alt="لوگوی سامیر CRFx" class="footer-logo-img">
-            </div>
-            <div class="footer-links">
-                <h3>ارتباط با ما</h3>
-                <ul>
-                    <li><a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a></li>
-                    <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
-                    <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
-                </ul>
-            </div>
-            <div class="footer-info">
-                <p>۵ سال تجربه در بازار فارکس | سامیر CRFx</p>
-            </div>
-        </div>
-    </footer>
+    canvas {
+        width: 100%;
+        height: 100%;
+    }
 
-    <script>
-        const canvas = document.getElementById('priceChart');
-        const ctx = canvas.getContext('2d');
-        let candles = [];
+    footer {
+        background-color: rgba(0, 0, 0, 0.6); /* تغییر رنگ پس‌زمینه فوتر */
+        color: #fff;
+        text-align: center;
+        font-size: 16px;
+        padding: 50px 20px;
+        position: relative;
+    }
 
-        // اندازه canvas را تنظیم می‌کنیم
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
 
-        // تابع برای ساخت کندل‌های تصادفی
-        function createRandomCandle() {
-            const open = Math.random() * 1000 + 1000;
-            const close = Math.random() * 1000 + 1000;
-            const high = Math.max(open, close) + Math.random() * 20;
-            const low = Math.min(open, close) - Math.random() * 20;
+    .footer-logo {
+        flex: 1;
+        text-align: center;
+    }
 
-            return {
-                x: canvas.width,
-                open,
-                close,
-                high,
-                low
-            };
-        }
+    .footer-logo img {
+        width: 150px;
+        height: auto;
+    }
 
-        // رسم چارت قیمت
-        function drawChart() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+    .footer-links {
+        flex: 1;
+        text-align: center;
+    }
 
-            candles.forEach(candle => {
-                const color = candle.close > candle.open ? 'green' : 'red';
-                ctx.fillStyle = color;
+    .footer-links h3 {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
 
-                // رسم بدنه کندل
-                ctx.fillRect(candle.x, canvas.height - candle.close, 10, candle.open - candle.close);
+    .footer-links ul {
+        list-style: none;
+        padding: 0;
+    }
 
-                // رسم خطوط بالا و پایین کندل
-                ctx.beginPath();
-                ctx.moveTo(candle.x + 5, canvas.height - candle.high);
-                ctx.lineTo(candle.x + 5, canvas.height - candle.low);
-                ctx.strokeStyle = color;
-                ctx.stroke();
-            });
+    .footer-links ul li {
+        margin-bottom: 10px;
+    }
 
-            // حرکت کندل‌ها به سمت چپ
-            candles.forEach(candle => {
-                candle.x -= 1;
-                if (candle.x < -60) {
-                    candles.shift();
-                    candles.push(createRandomCandle());
-                }
-            });
+    .footer-links ul li a {
+        color: #00ffcc;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
 
-            requestAnimationFrame(drawChart);
-        }
+    .footer-links ul li a:hover {
+        color: #fff;
+    }
 
-        // تنظیمات اولیه
-        for (let i = 0; i < 50; i++) {
-            candles.push(createRandomCandle());
-        }
+    .footer-info {
+        flex: 1;
+        text-align: center;
+    }
 
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+    .footer-info p {
+        font-size: 14px;
+        margin-top: 10px;
+    }
+</style>
+
+<script>
+    const canvas = document.getElementById('priceChart');
+    const ctx = canvas.getContext('2d');
+    let candles = [];
+
+    // اندازه canvas را تنظیم می‌کنیم
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // تابع برای ساخت کندل‌های تصادفی
+    function createRandomCandle() {
+        const open = Math.random() * 1000 + 1000;
+        const close = Math.random() * 1000 + 1000;
+        const high = Math.max(open, close) + Math.random() * 20;
+        const low = Math.min(open, close) - Math.random() * 20;
+
+        return {
+            x: canvas.width,
+            open,
+            close,
+            high,
+            low
+        };
+    }
+
+    // رسم چارت قیمت
+    function drawChart() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        candles.forEach(candle => {
+            const color = candle.close > candle.open ? 'green' : 'red';
+            ctx.fillStyle = color;
+
+            // رسم بدنه کندل
+            ctx.fillRect(candle.x, canvas.height - candle.close, 10, candle.open - candle.close);
+
+            // رسم خطوط بالا و پایین کندل
+            ctx.beginPath();
+            ctx.moveTo(candle.x + 5, canvas.height - candle.high);
+            ctx.lineTo(candle.x + 5, canvas.height - candle.low);
+            ctx.strokeStyle = color;
+            ctx.stroke();
         });
 
-        drawChart();
-    </script>
-</body>
-</html>
+        // حرکت کندل‌ها به سمت چپ
+        candles.forEach(candle => {
+            candle.x -= 1;
+            if (candle.x < -60) {
+                candles.shift();
+                candles.push(createRandomCandle());
+            }
+        });
+
+        requestAnimationFrame(drawChart);
+    }
+
+    // تنظیمات اولیه
+    for (let i = 0; i < 50; i++) {
+        candles.push(createRandomCandle());
+    }
+
+    window.addEventListener('resize', () => {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    });
+
+    drawChart();
+</script>
