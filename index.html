@@ -11,12 +11,11 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             color: #fff;
-            overflow-x: hidden;
+            background: #000;
+            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
             height: 100vh; /* تنظیم ارتفاع برای تمام صفحه */
             display: flex;
             flex-direction: column;
-            background: #000;
-            position: relative;
         }
 
         header {
@@ -74,21 +73,23 @@
             margin-bottom: 20px;
         }
 
-        .buttons {
+        /* دکمه‌ها */
+        #hero .buttons {
             display: flex;
-            flex-direction: column;
+            flex-direction: column; /* به صورت ستونی */
             align-items: center;
             gap: 20px;
         }
 
+        /* برای ردیفی کردن دکمه‌های اینستاگرام و تیک تاک */
         .social-buttons {
             display: flex;
-            gap: 20px;
+            gap: 20px; /* فاصله بین دکمه‌ها */
             justify-content: center;
             align-items: center;
         }
 
-        .buttons a {
+        #hero .buttons a {
             display: inline-block;
             padding: 15px 30px;
             margin: 10px;
@@ -100,7 +101,7 @@
             transition: 0.3s;
         }
 
-        .buttons a:hover {
+        #hero .buttons a:hover {
             background-color: #fff;
             color: #00ffcc;
         }
@@ -112,6 +113,16 @@
             font-size: 14px;
         }
 
+        #bgCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
         .social-icons {
             position: fixed;
             bottom: 20px;
@@ -131,42 +142,6 @@
         .social-icons a img:hover {
             transform: scale(1.2);
         }
-
-        .info-box {
-            background-color: rgba(0, 255, 204, 0.1);
-            border: 2px solid #00ffcc;
-            padding: 30px;
-            margin: 20px 0;
-            border-radius: 10px;
-            box-shadow: 0px 4px 10px rgba(0, 255, 204, 0.4);
-            transition: 0.3s;
-        }
-
-        .info-box:hover {
-            background-color: rgba(0, 255, 204, 0.2);
-            box-shadow: 0px 4px 20px rgba(0, 255, 204, 0.6);
-        }
-
-        .info-box h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: #00ffcc;
-        }
-
-        .info-box p {
-            font-size: 16px;
-            color: #ddd;
-        }
-
-        /* ایجاد پس زمینه با چارت شمعی */
-        .tradingview-widget-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-        }
     </style>
 </head>
 <body>
@@ -180,16 +155,13 @@
         </nav>
     </header>
 
-    <!-- چارت شمعی از TradingView -->
-    <div class="tradingview-widget-container">
-        <div id="tradingview_12345"></div>
-    </div>
-
     <section id="hero">
+        <canvas id="bgCanvas"></canvas>
         <div class="content">
             <h1>سامیر CRFx</h1>
             <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
             <div class="buttons">
+                <!-- دکمه‌های اینستاگرام و تیک تاک در کنار هم -->
                 <div class="social-buttons">
                     <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
                     <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roOWIflDro&_r=1" target="_blank">تیک‌تاک</a>
@@ -201,21 +173,17 @@
     </section>
 
     <section id="about">
-        <div class="info-box">
-            <h2>درباره من</h2>
-            <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
-        </div>
+        <h2>درباره من</h2>
+        <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
     </section>
 
     <section id="services">
-        <div class="info-box">
-            <h2>خدمات ما</h2>
-            <ul>
-                <li>آموزش رایگان فارکس</li>
-                <li>سیگنال‌های حرفه‌ای و VIP</li>
-                <li>پشتیبانی و ارتباط با ادمین</li>
-            </ul>
-        </div>
+        <h2>خدمات ما</h2>
+        <ul>
+            <li>آموزش رایگان فارکس</li>
+            <li>سیگنال‌های حرفه‌ای و VIP</li>
+            <li>پشتیبانی و ارتباط با ادمین</li>
+        </ul>
     </section>
 
     <footer>
@@ -227,30 +195,65 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
         </a>
         <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roOWIflDro&_r=1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/TikTok_logo_2021.svg" alt="تیک‌تاک">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
         </a>
         <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/YouTube_logo_2015.png" alt="یوتیوب">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
         </a>
         <a href="https://t.me/milionersho_cRFx" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Telegram_Logo.svg" alt="تلگرام">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
         </a>
     </div>
 
-    <!-- TradingView Widget Script -->
-    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-    <script type="text/javascript">
-        new TradingView.widget({
-            "width": "100%",
-            "height": "100%",
-            "symbol": "BINANCE:BTCUSDT",
-            "interval": "1m",
-            "timezone": "Asia/Tehran",
-            "theme": "dark",
-            "style": "1",
-            "locale": "fa",
-            "container_id": "tradingview_12345"
+    <script>
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // تنظیم ابعاد canvas
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
+        const lines = [];
+        for (let i = 0; i < 30; i++) {
+            lines.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
+            });
+        }
+
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            lines.forEach(line => {
+                ctx.beginPath();
+                ctx.moveTo(line.x, line.y);
+                ctx.lineTo(line.x, line.y - line.length);
+                ctx.strokeStyle = line.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                line.y += line.speed;
+
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
+                }
+            });
+
+            requestAnimationFrame(drawBackground);
+        }
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
+
+        drawBackground();
     </script>
 </body>
 </html>
