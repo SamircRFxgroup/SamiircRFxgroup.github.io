@@ -191,6 +191,57 @@
                 transform: translateY(0);
             }
         }
+
+        /* Admin Section Styles */
+        .admin-boxes {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .admin-box {
+            background-color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .admin-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .admin-box h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .admin-box p {
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007f7f;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            background-color: #ffcc00;
+            transform: translateY(-3px);
+        }
+
     </style>
 </head>
 <body>
@@ -226,19 +277,67 @@
         </ul>
     </section>
 
+    <section class="admin-boxes">
+        <div class="admin-box">
+            <h3>ادمین خدمات</h3>
+            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به کانال مشتریان ما بپیوندید.</p>
+            <a href="https://t.me/cRFxfamily" class="admin-btn">پیوند به ادمین</a>
+        </div>
+        <div class="admin-box">
+            <h3>ادمین VIP</h3>
+            <p>برای دریافت سیگنال‌های VIP رایگان، به کانال ما بپیوندید.</p>
+            <a href="https://t.me/Samircrfx_signal" class="admin-btn">عضویت در VIP</a>
+        </div>
+    </section>
+
     <footer>
-        <p>تمامی حقوق محفوظ است | <a href="#contact">تماس با ما</a></p>
+        <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
     </footer>
 
     <div class="background-animation"></div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const background = document.querySelector('.background-animation');
-            setInterval(function() {
-                background.style.animationPlayState = 'running';
-            }, 1000);
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.fadeInUp');
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            sections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const chartBackground = document.querySelector('.background-animation');
+            if (chartBackground) {
+                chartBackground.style.animation = "moveBackground 30s linear infinite";
+            }
+        });
+
+        const buttons = document.querySelectorAll('.admin-btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                button.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                link.style.transform = 'scale(1.05)';
+            });
+            link.addEventListener('mouseleave', function() {
+                link.style.transform = 'scale(1)';
+            });
         });
     </script>
+
 </body>
 </html>
