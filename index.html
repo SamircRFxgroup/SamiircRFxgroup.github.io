@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SamircRFxgroup</title>
-    <!-- فونت -->
     <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
-    <!-- استایل -->
     <style>
-        /* تنظیمات پایه */
         * {
             margin: 0;
             padding: 0;
@@ -22,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* هدر و منو */
         header {
             display: flex;
             justify-content: center;
@@ -36,6 +32,10 @@
             display: flex;
             list-style: none;
             gap: 20px;
+        }
+
+        nav ul li {
+            position: relative;
         }
 
         nav ul li a {
@@ -55,7 +55,23 @@
             transform: translateY(-5px);
         }
 
-        /* بخش قهرمان */
+        .btn-hover-animate {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover .btn-hover-animate {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
         .hero {
             position: relative;
             height: 90vh;
@@ -74,51 +90,53 @@
             letter-spacing: 2px;
         }
 
-        /* بخش برنامه‌ها */
-        .programs-section {
+        .section {
             padding: 80px 20px;
             text-align: center;
             background: #1a1a1a;
+            transition: background 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .programs-section h2 {
+        .section:hover {
+            background: #00ffcc;
+        }
+
+        .section h2 {
             font-size: 30px;
             margin-bottom: 20px;
-        }
-
-        .programs-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-        }
-
-        .program-box {
-            background-color: #3b5c5c;
             color: #fff;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            width: 180px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
         }
 
-        .program-box:hover {
-            background-color: #ffcc00;
-            transform: translateY(-5px);
-        }
-
-        .program-box a {
-            color: #fff;
+        .section p {
             font-size: 18px;
-            text-decoration: none;
+            margin-bottom: 40px;
+            color: #fff;
         }
 
-        /* استایل فوتر */
+        .section ul {
+            list-style: none;
+        }
+
+        .section ul li a {
+            color: #fff;
+            font-size: 20px;
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .section ul li a:hover {
+            color: #ffcc00;
+        }
+
         footer {
             background-color: #1a1a1a;
             padding: 20px;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         footer p {
@@ -136,7 +154,6 @@
             color: #ffcc00;
         }
 
-        /* انیمیشن پس‌زمینه */
         .background-animation {
             position: absolute;
             top: 0;
@@ -150,11 +167,14 @@
         }
 
         @keyframes moveBackground {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-100%); }
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
-        /* انیمیشن محتوای داخلی */
         .fadeInUp {
             animation: fadeInUp 1s ease-in-out;
         }
@@ -169,27 +189,141 @@
                 transform: translateY(0);
             }
         }
+
+        /* Admin Box Styles */
+        .admin-boxes {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .admin-box {
+            background-color: #5f6368;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .admin-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .admin-box h3 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .admin-box p {
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+
+        .admin-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007f7f;
+            color: #fff;
+            font-size: 16px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .admin-btn:hover {
+            background-color: #ffcc00;
+            transform: translateY(-3px);
+        }
+
+        /* Programs Section */
+        .programs-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1a1a1a;
+        }
+
+        .programs-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .programs-section .programs-row {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .programs-section .programs-row .program-box {
+            background-color: #3b5c5c;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            width: 180px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .programs-section .programs-row .program-box:hover {
+            background-color: #ffcc00;
+            transform: translateY(-5px);
+        }
+
+        .programs-section .programs-row .program-box a {
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .programs-section ul {
+            list-style: none;
+            margin-top: 30px;
+            padding: 0;
+            text-align: center;
+        }
+
+        .programs-section ul li a {
+            color: #fff;
+            font-size: 20px;
+            display: block;
+            margin: 10px 0;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .programs-section ul li a:hover {
+            color: #ffcc00;
+        }
+
     </style>
 </head>
 <body>
-    <!-- هدر -->
+
     <header>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما</a></li>
-                <li><a href="#about">درباره من</a></li>
-                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- بخش قهرمان -->
     <section class="hero fadeInUp">
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
         <h3>(ثروت در دستان شما خواهد بود)</h3>
     </section>
 
-    <!-- بخش برنامه‌ها -->
     <section class="programs-section fadeInUp">
         <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
         <div class="programs-row">
@@ -208,34 +342,67 @@
         </div>
     </section>
 
-    <!-- فوتر -->
+    <section class="admin-boxes fadeInUp">
+        <div class="admin-box">
+            <h3>ادمین خدمات</h3>
+            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
+            <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
+        </div>
+        <div class="admin-box">
+            <h3>ادمین VIP</h3>
+            <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
+            <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
+        </div>
+    </section>
+
     <footer>
         <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
     </footer>
 
-    <!-- انیمیشن پس‌زمینه -->
     <div class="background-animation"></div>
 
-    <!-- اسکریپت‌ها -->
     <script>
-        // انیمیشن اسکرول برای نمایش بخش‌ها
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('.fadeInUp');
             const triggerBottom = window.innerHeight / 5 * 4;
 
-            sections.forEach(section => {
+            sections.forEach(function(section) {
                 const sectionTop = section.getBoundingClientRect().top;
-                section.classList.toggle('show', sectionTop < triggerBottom);
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
             });
         });
 
-        // تنظیم انیمیشن پس‌زمینه هنگام بارگذاری
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener("DOMContentLoaded", function() {
             const chartBackground = document.querySelector('.background-animation');
             if (chartBackground) {
-                chartBackground.style.animation = 'moveBackground 30s linear infinite';
+                chartBackground.style.animation = "moveBackground 30s linear infinite";
             }
         });
+
+        const buttons = document.querySelectorAll('.admin-btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                button.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                link.style.transform = 'scale(1.05)';
+            });
+            link.addEventListener('mouseleave', function() {
+                link.style.transform = 'scale(1)';
+            });
+        });
     </script>
+
 </body>
 </html>
