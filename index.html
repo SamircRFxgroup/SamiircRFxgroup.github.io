@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SamircRFxgroup</title>
     <link href="https://fonts.googleapis.com/css2?family=Vazir&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         * {
             margin: 0;
@@ -55,28 +56,24 @@
             transform: translateY(-5px);
         }
 
-        .btn-hover-animate {
+        /* Chard background animation */
+        .chart-container {
             position: absolute;
-            bottom: -10px;
+            top: 0;
             left: 0;
-            right: 0;
-            height: 3px;
-            background-color: #ffcc00;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
         }
 
-        nav ul li a:hover .btn-hover-animate {
-            transform: scaleX(1);
-            transform-origin: bottom left;
+        canvas {
+            width: 100%;
+            height: 100%;
         }
 
         .hero {
             position: relative;
             height: 90vh;
-            background: url('https://yourchartanimationlink.com') no-repeat center center fixed;
-            background-size: cover;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -90,107 +87,7 @@
             letter-spacing: 2px;
         }
 
-        .section {
-            padding: 80px 20px;
-            text-align: center;
-            background: #1a1a1a;
-            transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .section:hover {
-            background: #00ffcc;
-        }
-
-        .section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .section p {
-            font-size: 18px;
-            margin-bottom: 40px;
-            color: #fff;
-        }
-
-        .section ul {
-            list-style: none;
-        }
-
-        .section ul li a {
-            color: #fff;
-            font-size: 20px;
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .section ul li a:hover {
-            color: #ffcc00;
-        }
-
-        footer {
-            background-color: #1a1a1a;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        }
-
-        footer p {
-            font-size: 18px;
-            color: #fff;
-        }
-
-        footer a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        footer a:hover {
-            color: #ffcc00;
-        }
-
-        .background-animation {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://yourchartanimationlink.com') repeat;
-            animation: moveBackground 30s linear infinite;
-            opacity: 0.1;
-            z-index: -1;
-        }
-
-        @keyframes moveBackground {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        .fadeInUp {
-            animation: fadeInUp 1s ease-in-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Admin Box Styles */
+        /* Admin and Programs Sections */
         .admin-boxes {
             display: flex;
             gap: 30px;
@@ -240,71 +137,6 @@
             transform: translateY(-3px);
         }
 
-        /* Programs Section */
-        .programs-section {
-            padding: 80px 20px;
-            text-align: center;
-            background: #1a1a1a;
-        }
-
-        .programs-section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .programs-section .programs-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .programs-section .programs-row .program-box {
-            background-color: #3b5c5c;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 180px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .programs-section .programs-row .program-box:hover {
-            background-color: #ffcc00;
-            transform: translateY(-5px);
-        }
-
-        .programs-section .programs-row .program-box a {
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .programs-section ul {
-            list-style: none;
-            margin-top: 30px;
-            padding: 0;
-            text-align: center;
-        }
-
-        .programs-section ul li a {
-            color: #fff;
-            font-size: 20px;
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .programs-section ul li a:hover {
-            color: #ffcc00;
-        }
-
     </style>
 </head>
 <body>
@@ -312,36 +144,18 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#services">خدمات</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero fadeInUp">
+    <section class="hero">
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
-    <section class="programs-section fadeInUp">
-        <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
-        <div class="programs-row">
-            <div class="program-box">
-                <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
-            </div>
-            <div class="program-box">
-                <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="admin-boxes fadeInUp">
+    <section class="admin-boxes">
         <div class="admin-box">
             <h3>ادمین خدمات</h3>
             <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
@@ -358,48 +172,44 @@
         <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
     </footer>
 
-    <div class="background-animation"></div>
+    <!-- Chart.js Library -->
+    <div class="chart-container">
+        <canvas id="priceChart"></canvas>
+    </div>
 
     <script>
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.fadeInUp');
-            const triggerBottom = window.innerHeight / 5 * 4;
+        var ctx = document.getElementById('priceChart').getContext('2d');
 
-            sections.forEach(function(section) {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('show');
-                } else {
-                    section.classList.remove('show');
+        var chart = new Chart(ctx, {
+            type: 'candlestick', // Use candlestick chart type
+            data: {
+                datasets: [{
+                    label: 'قیمت',
+                    data: [
+                        { t: '2024-11-01', o: 3200, h: 3300, l: 3150, c: 3250 },
+                        { t: '2024-11-02', o: 3250, h: 3350, l: 3200, c: 3300 },
+                        { t: '2024-11-03', o: 3300, h: 3400, l: 3250, c: 3350 },
+                        { t: '2024-11-04', o: 3350, h: 3450, l: 3300, c: 3400 }
+                    ],
+                    borderColor: '#ffcc00', // Color for up candles
+                    backgroundColor: '#00ffcc', // Color for down candles
+                    borderWidth: 1,
+                    borderRadius: 2,
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        }
+                    },
+                    y: {
+                        beginAtZero: false
+                    }
                 }
-            });
-        });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const chartBackground = document.querySelector('.background-animation');
-            if (chartBackground) {
-                chartBackground.style.animation = "moveBackground 30s linear infinite";
             }
-        });
-
-        const buttons = document.querySelectorAll('.admin-btn');
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                button.style.transform = 'translateY(-3px)';
-            });
-            button.addEventListener('mouseleave', function() {
-                button.style.transform = 'translateY(0)';
-            });
-        });
-
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                link.style.transform = 'scale(1.05)';
-            });
-            link.addEventListener('mouseleave', function() {
-                link.style.transform = 'scale(1)';
-            });
         });
     </script>
 
