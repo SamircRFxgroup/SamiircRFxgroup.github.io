@@ -31,7 +31,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px; /* اضافه کردن فاصله بین دکمه‌ها */
+            gap: 20px;
         }
 
         nav ul li {
@@ -41,13 +41,13 @@
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 16px; /* اندازه متن‌ها کوچک‌تر شد */
+            font-size: 16px;
             font-weight: bold;
             padding: 12px 25px;
-            background-color: #007f7f; /* رنگ جدید برای باکس */
+            background-color: #007f7f;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* کاهش قدرت نور */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         nav ul li a:hover {
@@ -84,7 +84,7 @@
         }
 
         .hero h2 {
-            font-size: 40px; /* اندازه فونت هدر کاهش یافته */
+            font-size: 40px;
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
@@ -95,7 +95,7 @@
             text-align: center;
             background: #1a1a1a;
             transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow less intense */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         .section:hover {
@@ -109,7 +109,7 @@
         }
 
         .section p {
-            font-size: 18px; /* اندازه متن کوچک‌تر شد */
+            font-size: 18px;
             margin-bottom: 40px;
             color: #fff;
         }
@@ -119,8 +119,8 @@
         }
 
         .section ul li a {
-            color: #fff; /* White text for better readability */
-            font-size: 20px; /* اندازه متن‌ها کوچک‌تر شد */
+            color: #fff;
+            font-size: 20px;
             display: block;
             margin: 10px 0;
             text-decoration: none;
@@ -154,7 +154,6 @@
             color: #ffcc00;
         }
 
-        /* Background Animation for Price Chart */
         .background-animation {
             position: absolute;
             top: 0;
@@ -176,7 +175,6 @@
             }
         }
 
-        /* Fade In Animation for Sections */
         .fadeInUp {
             animation: fadeInUp 1s ease-in-out;
         }
@@ -192,7 +190,7 @@
             }
         }
 
-        /* Admin Section Styles */
+        /* Admin Box Styles */
         .admin-boxes {
             display: flex;
             gap: 30px;
@@ -242,6 +240,42 @@
             transform: translateY(-3px);
         }
 
+        /* Programs Section */
+        .programs-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1a1a1a;
+        }
+
+        .programs-section h2 {
+            font-size: 30px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .programs-section ul {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .programs-section ul li a {
+            color: #fff;
+            font-size: 20px;
+            text-decoration: none;
+            display: block;
+            padding: 15px;
+            background-color: #007f7f;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .programs-section ul li a:hover {
+            background-color: #ffcc00;
+            transform: translateY(-5px);
+        }
+
     </style>
 </head>
 <body>
@@ -265,19 +299,15 @@
         <p>من پنج سال است که در بازار فارکس فعالیت دارم و هدفم این است که با آموزش‌های رایگان به شما کمک کنم تا در این بازار موفق شوید.</p>
     </section>
 
-    <section id="services" class="section fadeInUp">
-        <h2>خدمات ما</h2>
+    <section class="programs-section fadeInUp">
+        <h2>برنامه‌ها</h2>
         <ul>
             <li><a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a></li>
-            <li><a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a></li>
-            <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
-            <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
-            <li><a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a></li>
-            <li><a href="https://t.me/Samircrfx_signal" target="_blank">سیگنال VIP</a></li>
+            <li><a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a></li>
         </ul>
     </section>
 
-    <section class="admin-boxes">
+    <section class="admin-boxes fadeInUp">
         <div class="admin-box">
             <h3>ادمین خدمات</h3>
             <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به کانال مشتریان ما بپیوندید.</p>
