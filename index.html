@@ -3,110 +3,269 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سمیر CRFX | فارکس و سیگنال</title>
+    <title>سامیر CRFx | بازار فارکس</title>
     <style>
         /* استایل عمومی */
         body {
             margin: 0;
             padding: 0;
-            font-family: "Tahoma", sans-serif;
-            direction: rtl;
-            color: white;
-            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            color: #fff;
+            background: #000;
+            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
         }
 
         header {
-            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            z-index: 10;
+        }
+
+        header .logo img {
+            width: 120px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+            color: #00ffcc;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #fff;
+        }
+
+        /* انتقال آیکون‌ها به پایین header */
+        .social-icons {
+            display: flex;
+            gap: 10px;
+            position: absolute;
+            bottom: -40px; /* فاصله از پایین header */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .social-icons a img {
+            width: 30px;
+            height: 30px;
+            transition: 0.3s;
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.1);
+        }
+
+        section {
+            padding: 100px 20px;
             text-align: center;
-            z-index: 2;
-            padding: 50px 20px;
-            background: rgba(0, 0, 0, 0.7);
+            min-height: 100vh;
+            position: relative;
         }
 
-        header h1 {
-            margin: 0;
-            font-size: 3rem;
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            background: #000;
+            z-index: 1;
         }
 
-        header p {
-            font-size: 1.2rem;
+        #hero .content {
+            z-index: 1;
         }
 
-        canvas {
+        #hero .content h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 0px 0px 10px #00ffcc;
+        }
+
+        #hero .content p {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* لیست دکمه‌ها */
+        #hero .buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        #hero .buttons a {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        #hero .buttons a:hover {
+            background-color: #fff;
+            color: #00ffcc;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            font-size: 14px;
+        }
+
+        #bgCanvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 0;
         }
+
+        section {
+            padding: 50px 20px;
+        }
+
+        /* کاهش فاصله بین بخش‌ها */
+        #about, #services {
+            margin-bottom: 30px;
+        }
+
+        /* ثابت کردن آیکون تلگرام */
+        #telegram-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 1000;
+        }
+
     </style>
 </head>
 <body>
-    <!-- هدر اصلی سایت -->
     <header>
-        <h1>سمیر CRFX</h1>
-        <p>۵ سال تجربه در بازار فارکس</p>
+        <div class="logo">
+            <!-- لوگو حذف شده -->
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">درباره من</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- بوم برای انیمیشن -->
-    <canvas id="candlestickCanvas"></canvas>
+    <!-- آیکون‌ها در پایین Header -->
+    <div class="social-icons">
+        <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+        </a>
+        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+        </a>
+    </div>
+
+    <!-- آیکون تلگرام به صورت ثابت -->
+    <a href="https://t.me/milionersho_cRFx" target="_blank" id="telegram-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام" width="40">
+    </a>
+
+    <section id="hero">
+        <canvas id="bgCanvas"></canvas>
+        <div class="content">
+            <h1>سامیر CRFx</h1>
+            <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
+            <div class="buttons">
+                <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
+                <a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a>
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>درباره من</h2>
+        <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+    </section>
+
+    <section id="services">
+        <h2>خدمات ما</h2>
+        <ul>
+            <li>آموزش رایگان فارکس</li>
+            <li>سیگنال‌های حرفه‌ای و VIP</li>
+            <li>پشتیبانی و ارتباط با ادمین</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
+    </footer>
 
     <script>
-        // تنظیمات بوم (Canvas) برای نمایش انیمیشن کندل‌ها
-        const canvas = document.getElementById("candlestickCanvas");
-        const ctx = canvas.getContext("2d");
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        const candles = [];
-        const colors = ["#2ecc71", "#e74c3c"]; // سبز و قرمز
-
-        // ساخت کندل
-        function createCandle() {
-            const width = Math.random() * 10 + 5;
-            const height = Math.random() * 80 + 20;
-            const x = Math.random() * canvas.width;
-            const y = canvas.height - height;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            candles.push({ x, y, width, height, color });
-        }
-
-        // رسم کندل
-        function drawCandle(candle) {
-            ctx.fillStyle = candle.color;
-            ctx.fillRect(candle.x, candle.y, candle.width, candle.height);
-        }
-
-        // به روز رسانی کندل‌ها
-        function updateCandles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            candles.forEach((candle, index) => {
-                candle.y -= 2; // حرکت به بالا
-                if (candle.y + candle.height < 0) {
-                    candles.splice(index, 1); // حذف کندل‌هایی که از صفحه خارج می‌شوند
-                }
-                drawCandle(candle);
+        // خطوط متحرک چارت قیمتی (سبز و قرمز)
+        const lines = [];
+        for (let i = 0; i < 30; i++) {
+            lines.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // سبز برای صعودی و قرمز برای نزولی
             });
         }
 
-        // حلقه انیمیشن
-        function animate() {
-            updateCandles();
-            if (candles.length < 50) {
-                createCandle();
-            }
-            requestAnimationFrame(animate);
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            lines.forEach(line => {
+                ctx.beginPath();
+                ctx.moveTo(line.x, line.y);
+                ctx.lineTo(line.x, line.y - line.length);
+                ctx.strokeStyle = line.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                line.y += line.speed;
+
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
+                }
+            });
+
+            requestAnimationFrame(drawBackground);
         }
 
-        // شروع انیمیشن
-        animate();
-
-        // تغییر سایز بوم در صورت تغییر سایز پنجره
-        window.addEventListener("resize", () => {
+        // تنظیم مجدد اندازه
+        window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
-    </script>
-</body>
-</html>
+
+        drawBackground();
+    </script
