@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سامیر CRFx | بازار فارکس</title>
     <style>
+        /* استایل عمومی */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
             color: #fff;
             background: #000;
-            overflow-x: hidden;
+            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
         }
 
         header {
@@ -46,13 +47,10 @@
             color: #fff;
         }
 
+        /* اضافه کردن آیکون‌های شبکه‌های اجتماعی */
         .social-icons {
             display: flex;
             gap: 10px;
-            position: absolute;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
         }
 
         .social-icons a img {
@@ -97,6 +95,7 @@
             margin-bottom: 20px;
         }
 
+        /* لیست دکمه‌ها */
         #hero .buttons {
             display: flex;
             flex-direction: column;
@@ -141,33 +140,11 @@
             padding: 50px 20px;
         }
 
+        /* کاهش فاصله بین بخش‌ها */
         #about, #services {
             margin-bottom: 30px;
         }
 
-        #telegram-icon {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            z-index: 1000;
-        }
-
-        #contact {
-            text-align: center;
-            background: #333;
-            padding: 50px 20px;
-            margin-top: 50px;
-        }
-
-        #contact h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        #contact p {
-            font-size: 18px;
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
@@ -182,18 +159,18 @@
                 <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
+        <div class="social-icons">
+            <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
+            </a>
+            <a href="https://t.me/milionersho_cRFx" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+            </a>
+            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+            </a>
+        </div>
     </header>
-    <div class="social-icons">
-        <a href="https://www.instagram.com/samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-        </a>
-        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-        </a>
-    </div>
-    <a href="https://t.me/milionersho_cRFx" target="_blank" id="telegram-icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام" width="40">
-    </a>
 
     <section id="hero">
         <canvas id="bgCanvas"></canvas>
@@ -222,64 +199,59 @@
         </ul>
     </section>
 
-    <section id="contact">
-        <h2>تماس با ما</h2>
-        <p>برای تماس با ادمین‌ها، از طریق لینک‌های زیر با آنها ارتباط برقرار کنید:</p>
-        <p>برای خدمات به کاربران: <a href="https://t.me/cRFxfamily" target="_blank">https://t.me/cRFxfamily</a></p>
-        <p>برای عضویت در کانال VIP رایگان: <a href="https://t.me/Samircrfx_signal" target="_blank">https://t.me/Samircrfx_signal</a></p>
-    </section>
-
     <footer>
         <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
     </footer>
 
     <script>
-const canvas = document.getElementById('bgCanvas');
-const ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
 
-const lines = [];
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
 
-// ایجاد خطوط متحرک
-for (let i = 0; i < 30; i++) {
-    lines.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        length: Math.random() * 150 + 50, // طول خط
-        speed: Math.random() * 2 + 0.5, // سرعت حرکت خط
-        color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // رنگ‌های تصادفی (سبز یا قرمز)
-    });
-}
-
-// رسم خطوط متحرک
-function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height); // پاک کردن صفحه
-    for (let i = 0; i < lines.length; i++) {
-        const line = lines[i];
-
-        // رسم خط
-        ctx.beginPath();
-        ctx.moveTo(line.x, line.y);
-        ctx.lineTo(line.x + line.length, line.y + line.length);
-        ctx.strokeStyle = line.color;
-        ctx.lineWidth = 2;
-        ctx.stroke();
-
-        // به‌روز رسانی موقعیت خط
-        line.x += line.speed;
-        line.y += line.speed;
-
-        // اگر خط از محدوده خارج شد، به مکان جدید برمی‌گردد
-        if (line.x > canvas.width || line.y > canvas.height) {
-            line.x = Math.random() * canvas.width;
-            line.y = Math.random() * canvas.height;
+        // خطوط متحرک چارت قیمتی (صعودی و نزولی)
+        const lines = [];
+        for (let i = 0; i < 30; i++) {
+            lines.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                length: Math.random() * 150 + 50,
+                speed: Math.random() * 2 + 0.5,
+                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز برای نزولی
+            });
         }
-    }
-    requestAnimationFrame(animate);
-}
 
-        animate();
-    ‹/script>
-</ body>
+        function drawBackground() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            lines.forEach(line => {
+                ctx.beginPath();
+                ctx.moveTo(line.x, line.y);
+                ctx.lineTo(line.x, line.y - line.length);
+                ctx.strokeStyle = line.color;
+                ctx.lineWidth = 2;
+                ctx.stroke();
+
+                line.y += line.speed;
+
+                if (line.y > canvas.height) {
+                    line.y = 0 - line.length;
+                    line.x = Math.random() * canvas.width;
+                    line.color = Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)';
+                }
+            });
+
+            requestAnimationFrame(drawBackground);
+        }
+
+        // تنظیم مجدد اندازه
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+
+        drawBackground();
+    </script>
+</body>
 </html>
