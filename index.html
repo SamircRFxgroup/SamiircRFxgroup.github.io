@@ -198,6 +198,40 @@
             background-color: #fff;
             color: #00ffcc;
         }
+
+        /* استایل برای دکمه کشویی */
+        .toggle-btn {
+            padding: 10px 20px;
+            background-color: #00ffcc;
+            color: #000;
+            text-decoration: none;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover {
+            background-color: #fff;
+            color: #00ffcc;
+        }
+
+        .toggle-content {
+            display: none;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: #fff;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        .active .toggle-content {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -230,86 +264,59 @@
     <section id="about">
         <h2>درباره من</h2>
         <p>من سامیر هستم و بیش از ۵ سال تجربه در بازار فارکس دارم. هدف من کمک به علاقه‌مندان برای یادگیری فارکس و کسب درآمد پایدار است.</p>
+
+        <!-- دکمه‌های کشویی -->
+        <div class="toggle-container">
+            <a href="javascript:void(0)" class="toggle-btn">مشخصات بیشتر درباره من</a>
+            <div class="toggle-content">
+                <p>من در فارکس استراتژی‌های خاصی دارم که به افراد کمک می‌کند تا بازار را بهتر تحلیل کنند و نتایج بهتری بگیرند.</p>
+                <p>خدمات مشاوره‌ای و تحلیل‌هایی که من ارائه می‌کنم، به شما کمک می‌کند تا در هر شرایطی در بازار فارکس موفق باشید.</p>
+            </div>
+        </div>
     </section>
 
     <section id="services">
         <h2>خدمات ما</h2>
         <ul>
-            <li>آموزش رایگان فارکس</li>
-            <li>سیگنال‌های حرفه‌ای و VIP</li>
-            <li>پشتیبانی و ارتباط با ادمین</li>
+            <li>آموزش تحلیل تکنیکال</li>
+            <li>سیگنال‌های فارکس</li>
+            <li>مشاوره و راهنمایی فردی</li>
         </ul>
+
+        <!-- دکمه‌های کشویی -->
+        <div class="toggle-container">
+            <a href="javascript:void(0)" class="toggle-btn">مشخصات بیشتر خدمات</a>
+            <div class="toggle-content">
+                <p>ما به شما در یادگیری استراتژی‌های تحلیل بازار فارکس کمک خواهیم کرد و بهترین سیگنال‌ها را برای ورود به معاملات ارسال می‌کنیم.</p>
+            </div>
+        </div>
     </section>
 
     <section id="admin">
         <div class="admin-box">
             <h3>تماس با ما</h3>
-            <p>برای ارتباط با ادمین‌های ما و دریافت خدمات بیشتر، از دکمه‌های زیر استفاده کنید:</p>
+            <p>برای هرگونه مشاوره یا سوال، می‌توانید با ما در ارتباط باشید.</p>
             <div class="admin-buttons">
-                <a href="https://t.me/cRFxfamily" target="_blank">ادمین کلاپ میلیونرها</a>
-                <a href="https://t.me/Samircrfx_signal" target="_blank">ادمین عضویت به کانال VIP رایگان</a>
+                <a href="https://t.me/cRFxfamily" target="_blank">ادمین کلاپ میلیونر ها</a>
+                <a href="https://t.me/Samircrfx_signal" target="_blank">ادمین عضویت VIP رایگان</a>
             </div>
         </div>
     </section>
 
     <footer>
-        <p>تمامی حقوق محفوظ است © 2024 | سامیر CRFx</p>
+        <p>&copy; 2024 سامیر CRFx | تمامی حقوق محفوظ است</p>
     </footer>
 
-    <div class="social-icons">
-        <a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
-        </a>
-        <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roSsUNjT7d&_r=1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/TikTok_logo_2018.svg/1024px-TikTok_logo_2018.svg.png" alt="تیک‌تاک">
-        </a>
-        <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a3/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
-        </a>
-        <a href="https://t.me/cRFxfamily" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Telegram_logo.svg" alt="تلگرام">
-        </a>
-    </div>
-
     <script>
-        // کد جاوااسکریپت برای پس‌زمینه کندل‌استیک
-        const canvas = document.getElementById('bgCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        // اسکریپت جاوااسکریپت برای کشویی
+        const toggleBtns = document.querySelectorAll('.toggle-btn');
 
-        const lines = [];
-        for (let i = 0; i < 100; i++) {
-            lines.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                length: Math.random() * 10 + 10,
-                speed: Math.random() * 2 + 0.5,
-                color: Math.random() > 0.5 ? '#00ffcc' : '#ff3333',
+        toggleBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const container = btn.closest('.toggle-container');
+                container.classList.toggle('active');
             });
-        }
-
-        function drawBackground() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            lines.forEach(line => {
-                ctx.beginPath();
-                ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x, line.y + line.length);
-                ctx.strokeStyle = line.color;
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                line.y += line.speed;
-                if (line.y > canvas.height) {
-                    line.y = 0;
-                }
-            });
-
-            requestAnimationFrame(drawBackground);
-        }
-
-        drawBackground();
+        });
     </script>
 </body>
 </html>
