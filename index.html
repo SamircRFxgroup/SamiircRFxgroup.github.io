@@ -29,7 +29,7 @@
         }
 
         .logo {
-            width: 100px; /* اندازه کوچک‌تر برای لوگو */
+            width: 100px;
             height: auto;
         }
 
@@ -37,7 +37,7 @@
             display: flex;
             gap: 10px;
             justify-content: flex-start;
-            flex-wrap: wrap; /* جلوگیری از بیرون رفتن دکمه‌ها */
+            flex-wrap: wrap;
             margin-left: 20px;
         }
 
@@ -173,12 +173,10 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             background: linear-gradient(135deg, #009999, #00ffcc);
         }
-
     </style>
 </head>
 <body>
     <header>
-        <!-- لوگوی جدید شما -->
         <div><img src="https://raw.githubusercontent.com/f2cb709f-e68e-4550-b976-f668b53b6efa/main/logo.png" alt="لوگو" class="logo"></div>
         <nav>
             <ul>
@@ -230,30 +228,50 @@
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
-        // خطوط متحرک (چارت قیمت فارکس)
-        const lines = [];
-        for (let i = 0; i < 20; i++) {
-            lines.push({
-                x: Math.random() * canvas.width,
-                y: Math.random() * canvas.height,
-                length: Math.random() * 150 + 50,
-                speed: Math.random() * 1 + 0.5,
-                color: Math.random() > 0.5 ? 'rgba(0, 255, 204, 0.6)' : 'rgba(255, 0, 0, 0.6)' // قرمز و سبز
-            });
+        // ایجاد داده‌های کندل استیک (نمونه برای نمایش)
+        const candles = [];
+
+        function createRandomCandle() {
+            const open = Math.random() * 100 + 100;
+            const close = Math.random() * 100 + 100;
+            const high = Math.max(open, close) + Math.random() * 10;
+            const low = Math.min(open, close) - Math.random() * 10;
+            const x = candles.length * 60 + 10; // فاصله بین کندل‌ها
+
+            return { open, close, high, low, x };
         }
 
-        function drawBackground() {
+        // تولید 50 کندل استیک
+        for (let i = 0; i < 50; i++) {
+            candles.push(createRandomCandle());
+        }
+
+        function drawChart() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            lines.forEach(line => {
+
+            candles.forEach(candle => {
+                const color = candle.close > candle.open ? 'green' : 'red';
+                // رسم کندل استیک
                 ctx.beginPath();
-                ctx.moveTo(line.x, line.y);
-                ctx.lineTo(line.x + line.length, line.y + line.length);
-                ctx.strokeStyle = line.color;
+                ctx.moveTo(candle.x, candle.high);
+                ctx.lineTo(candle.x, candle.low);
+                ctx.strokeStyle = color;
                 ctx.stroke();
-                line.x += line.speed;
-                if (line.x > canvas.width) line.x = 0;
+
+                ctx.fillStyle = color;
+                ctx.fillRect(candle.x - 10, candle.close, 20, candle.open - candle.close);
             });
-            requestAnimationFrame(drawBackground);
+
+            // حرکت کندل‌ها به سمت چپ
+            candles.forEach(candle => {
+                candle.x -= 1;
+                if (candle.x < -60) {
+                    candles.shift();
+                    candles.push(createRandomCandle());
+                }
+            });
+
+            requestAnimationFrame(drawChart);
         }
 
         window.addEventListener('resize', () => {
@@ -261,7 +279,7 @@
             canvas.height = window.innerHeight;
         });
 
-        drawBackground();
+        drawChart();
     </script>
 </body>
 </html>
