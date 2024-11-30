@@ -11,14 +11,15 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Arial', sans-serif;
-            background: #111;
+            background-color: #121212;
             color: white;
-            overflow: hidden;
+            overflow-x: hidden;
         }
 
-        /* Animated Price Chart Background */
+        /* Animated Background */
         .background {
             position: absolute;
             top: 0;
@@ -35,17 +36,24 @@
             100% { transform: translateX(-100%); }
         }
 
+        /* Header */
         header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+            z-index: 10;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.8);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
         }
 
         .logo-container img {
-            width: 180px;
+            width: 200px;
+            cursor: pointer;
             transition: transform 0.3s ease;
         }
 
@@ -57,7 +65,7 @@
             list-style-type: none;
             padding: 0;
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
 
         nav ul li a {
@@ -73,18 +81,20 @@
             color: #FFD700;
         }
 
+        /* Sections */
         section {
-            padding: 80px 40px;
+            padding: 100px 40px;
             text-align: center;
             background: rgba(0, 0, 0, 0.7);
-            margin-top: 100px;
+            margin-top: 150px;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(0, 255, 0, 0.8);
         }
 
-        h1 {
-            font-size: 48px;
+        .section-title {
+            font-size: 50px;
             color: #FFD700;
+            margin-bottom: 20px;
             animation: fadeIn 2s ease-out;
         }
 
@@ -94,34 +104,46 @@
         }
 
         .intro p {
-            font-size: 20px;
+            font-size: 18px;
             color: #fff;
             animation: fadeIn 3s ease-out;
         }
 
-        .links .admin-links a {
-            display: inline-block;
-            color: #00FF00;
-            font-size: 20px;
-            margin: 20px 0;
-            text-decoration: none;
-            border: 2px solid #00FF00;
-            padding: 10px 20px;
-            border-radius: 30px;
-            transition: background-color 0.3s, color 0.3s;
+        /* Accordion Style */
+        .accordion {
+            background-color: #1c1c1c;
+            color: #fff;
+            border: 1px solid #00FF00;
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease;
         }
 
-        .links .admin-links a:hover {
+        .accordion:hover {
             background-color: #00FF00;
-            color: black;
         }
 
+        .panel {
+            padding: 0 18px;
+            display: none;
+            background-color: #333;
+            overflow: hidden;
+        }
+
+        /* Footer */
         footer {
             background: #000;
             color: #fff;
             text-align: center;
             padding: 20px;
             font-size: 14px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -142,15 +164,29 @@
         </nav>
     </header>
 
-    <section class="intro">
-        <h1>سلام! من سامیر هستم</h1>
+    <section>
+        <div class="section-title">سلام! من سامیر هستم</div>
         <p>من ۵ سال است در بازار فارکس فعالیت دارم و هدف من ارائه آموزش‌های رایگان و کاربردی در این حوزه است.</p>
     </section>
 
-    <section class="links">
-        <div class="admin-links">
-            <a href="https://t.me/cRFxfamily">ادمین 1 - برای دانش‌آموزان</a>
-            <a href="https://t.me/Samircrfx_signal">ادمین 2 - برای عضویت در کانال VIP</a>
+    <section>
+        <div class="accordion">درباره من بیشتر بدانید</div>
+        <div class="panel">
+            <p>من به‌عنوان یک تریدر حرفه‌ای، روش‌های خاص خودم را برای موفقیت در بازار فارکس پیدا کرده‌ام. در طول سال‌ها با تحلیل‌های تکنیکال و فاندامنتال، استراتژی‌هایی را شکل داده‌ام که به بسیاری از افراد کمک کرده‌اند. امروز، هدف من اشتراک‌گذاری این تجربه‌ها و آموزش‌های کاربردی است تا شما هم بتوانید در این بازار رقابتی موفق شوید.</p>
+        </div>
+
+        <div class="accordion">چگونه می‌توانید به ما بپیوندید؟</div>
+        <div class="panel">
+            <p>برای شروع آموزش، شما می‌توانید به کانال‌های تلگرام و یوتیوب ما مراجعه کرده و به‌صورت رایگان آموزش‌ها و سیگنال‌های ما را دریافت کنید. همچنین، اگر به‌دنبال عضویت در کانال VIP هستید، کافیست به ادمین دوم پیام دهید و اطلاعات بیشتری دریافت کنید.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-title">ارتباط با من</div>
+        <p>برای ارتباط با من و دریافت مشاوره‌های تخصصی می‌توانید از لینک‌های زیر استفاده کنید:</p>
+        <div class="links">
+            <a href="https://t.me/cRFxfamily" style="color: #FFD700;">ادمین 1 - برای دانش‌آموزان</a><br>
+            <a href="https://t.me/Samircrfx_signal" style="color: #FFD700;">ادمین 2 - برای عضویت در کانال VIP</a>
         </div>
     </section>
 
@@ -159,9 +195,18 @@
     </footer>
 
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            console.log("وب‌سایت شما با موفقیت بارگذاری شد.");
-        });
+        const accordions = document.getElementsByClassName("accordion");
+        for (let i = 0; i < accordions.length; i++) {
+            accordions[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                const panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
     </script>
 </body>
 </html>
