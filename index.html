@@ -50,8 +50,8 @@
         canvas.height = window.innerHeight;
 
         const candlesticks = [];
-        const maxCandles = 100; // تعداد کندل‌ها (بیشتر)
-        const candleWidth = 8; // عرض هر کندل (نازک‌تر)
+        const maxCandles = 100; // تعداد کندل‌ها
+        const candleWidth = 8; // عرض هر کندل
         const spaceBetween = 10; // فاصله افقی کمتر بین کندل‌ها
 
         // ایجاد کندل جدید
@@ -63,8 +63,10 @@
             const high = Math.max(open, close) + Math.random() * 30;
             const low = Math.min(open, close) - Math.random() * 30;
             const color = open > close ? 'rgba(255, 0, 0, 0.8)' : 'rgba(0, 255, 0, 0.8)'; // قرمز یا سبز
+            const speed = Math.random() * 1 + 0.5; // سرعت تصادفی برای هر کندل
+            const opacity = 1; // شفافیت اولیه
 
-            candlesticks.push({ x, open, close, high, low, color });
+            candlesticks.push({ x, y, open, close, high, low, color, speed, opacity });
 
             if (candlesticks.length > maxCandles) candlesticks.shift();
         }
@@ -75,11 +77,13 @@
 
             candlesticks.forEach(candle => {
                 ctx.beginPath();
+
                 // رسم خط بالا و پایین
                 ctx.moveTo(candle.x, candle.high);
                 ctx.lineTo(candle.x, candle.low);
                 ctx.strokeStyle = candle.color;
                 ctx.lineWidth = 2;
+                ctx.globalAlpha = candle.opacity; // شفافیت
                 ctx.stroke();
 
                 // رسم بدنه کندل
@@ -91,8 +95,19 @@
                     Math.abs(candle.open - candle.close)
                 );
 
+                // اضافه کردن سایه‌ی نور
+                ctx.beginPath();
+                ctx.arc(candle.x, Math.min(candle.open, candle.close) + Math.abs(candle.open - candle.close) / 2, 5, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 255, 255, 0.1)`;
+                ctx.fill();
+
                 // حرکت کندل‌ها به سمت چپ
-                candle.x -= 1;
+                candle.x -= candle.speed;
+
+                // کاهش شفافیت برای کندل‌های نزدیک به لبه
+                if (candle.x < canvas.width / 4) {
+                    candle.opacity -= 0.005;
+                }
             });
 
             // حذف کندل‌هایی که از صفحه خارج می‌شوند
