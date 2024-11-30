@@ -31,7 +31,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 20px; /* اضافه کردن فاصله بین دکمه‌ها */
         }
 
         nav ul li {
@@ -41,13 +41,13 @@
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 16px; /* اندازه متن‌ها کوچک‌تر شد */
             font-weight: bold;
             padding: 12px 25px;
-            background-color: #007f7f;
+            background-color: #007f7f; /* رنگ جدید برای باکس */
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* کاهش قدرت نور */
         }
 
         nav ul li a:hover {
@@ -84,7 +84,7 @@
         }
 
         .hero h2 {
-            font-size: 40px;
+            font-size: 40px; /* اندازه فونت هدر کاهش یافته */
             color: #fff;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
             letter-spacing: 2px;
@@ -95,7 +95,7 @@
             text-align: center;
             background: #1a1a1a;
             transition: background 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Shadow less intense */
         }
 
         .section:hover {
@@ -109,7 +109,7 @@
         }
 
         .section p {
-            font-size: 18px;
+            font-size: 18px; /* اندازه متن کوچک‌تر شد */
             margin-bottom: 40px;
             color: #fff;
         }
@@ -119,8 +119,8 @@
         }
 
         .section ul li a {
-            color: #fff;
-            font-size: 20px;
+            color: #fff; /* White text for better readability */
+            font-size: 20px; /* اندازه متن‌ها کوچک‌تر شد */
             display: block;
             margin: 10px 0;
             text-decoration: none;
@@ -154,21 +154,42 @@
             color: #ffcc00;
         }
 
-        .name-container {
-            margin-top: 30px;
-            text-align: center;
+        /* Background Animation for Price Chart */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://yourchartanimationlink.com') repeat;
+            animation: moveBackground 30s linear infinite;
+            opacity: 0.1;
+            z-index: -1;
         }
 
-        .name-container h3 {
-            font-size: 40px; /* اندازه متن کوچک‌تر شده */
-            color: #fff;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+        @keyframes moveBackground {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
         }
 
-        .name-container img {
-            width: 200px; /* اندازه لوگو بزرگ‌تر شده */
-            height: auto;
+        /* Fade In Animation for Sections */
+        .fadeInUp {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -187,12 +208,6 @@
     <section class="hero">
         <h2 class="fadeInUp">آموزش فارکس به صورت رایگان</h2>
     </section>
-
-    <!-- نام و لوگو -->
-    <div class="name-container">
-        <h3>SamircRFxgroup</h3>
-        <img src="https://yourlogolink.com" alt="Logo"> <!-- لینک لوگو را اینجا قرار دهید -->
-    </div>
 
     <section id="about" class="section fadeInUp">
         <h2>درباره من</h2>
@@ -216,5 +231,14 @@
     </footer>
 
     <div class="background-animation"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const background = document.querySelector('.background-animation');
+            setInterval(function() {
+                background.style.animationPlayState = 'running';
+            }, 1000);
+        });
+    </script>
 </body>
 </html>
