@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Forex Chart with Price Action Patterns</title>
+    <title>Dynamic Forex Chart with Enhanced Price Action Patterns</title>
     <style>
         body, html {
             margin: 0;
@@ -54,7 +54,7 @@
         const spaceBetween = 8;
         const waveAmplitude = 20;
 
-        // ایجاد کندل جدید با احتمال برای الگوهای قیمتی
+        // ایجاد کندل جدید با ویژگی‌های خاص و الگوهای قیمتی
         function createCandlestick() {
             const x = candlesticks.length * (candleWidth + spaceBetween);
             const y = Math.random() * canvas.height;
@@ -69,18 +69,21 @@
             // ایجاد کندل خاص (الگوهای پرایس اکشن)
             const patternChance = Math.random();
             if (patternChance < 0.1) {
-                // Doji
+                // Doji (الگوی دوجی)
                 close = open;
                 high = close + 10;
                 low = close - 10;
+                color = 'rgba(255, 255, 255, 0.6)'; // رنگ سفید برای Doji
             } else if (patternChance < 0.2) {
                 // Hammer (چکش)
                 high = open + 5;
                 low = close - 30;
+                color = 'rgba(0, 255, 255, 0.8)'; // رنگ آبی برای چکش
             } else if (patternChance < 0.3) {
                 // Shooting Star (شهاب سنگ)
                 low = close - 5;
                 high = open + 30;
+                color = 'rgba(255, 255, 0, 0.8)'; // رنگ زرد برای شهاب سنگ
             } else if (patternChance < 0.4) {
                 // Engulfing (پوشا)
                 const prevCandle = candlesticks[candlesticks.length - 1];
@@ -89,13 +92,14 @@
                     close = prevCandle.open + 20;
                     high = Math.max(open, close) + 10;
                     low = Math.min(open, close) - 10;
+                    color = 'rgba(0, 255, 0, 1)'; // رنگ سبز برای Engulfing
                 }
             }
 
             candlesticks.push({ x, y, open, close, high, low, color, speed, phase });
         }
 
-        // رسم کندل‌ها
+        // رسم کندل‌ها با انیمیشن‌های جذاب
         function drawCandlesticks() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -117,10 +121,12 @@
                     Math.abs(candle.open - candle.close)
                 );
 
-                candle.x -= candle.speed;
+                // حرکت تصادفی کندل‌ها
+                const randomBounce = Math.sin(Math.random() * Math.PI) * 3; // حرکت نوسانی تصادفی
+                candle.x -= candle.speed + randomBounce;
 
                 if (candle.x < -candleWidth) {
-                    candlesticks.splice(index, 1); // حذف کندل‌هایی که از صفحه خارج می‌شوند
+                    candlesticks.splice(index, 1); // حذف کندل‌های قدیمی
                 }
             });
 
