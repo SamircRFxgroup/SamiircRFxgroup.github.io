@@ -79,6 +79,7 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
+            z-index: 2; /* قرار دادن دکمه‌ها بالاتر از پس‌زمینه */
         }
 
         /* برای قرار دادن دکمه‌های اینستاگرام و تیک تاک در کنار هم */
@@ -116,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0;
+            z-index: 0; /* پس‌زمینه باید زیر دکمه‌ها باشد */
         }
 
         /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
@@ -198,7 +199,7 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
         </a>
         <a href="https://t.me/cRFxfamily" target="_blank">
-            <img src="https://upload.wikedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
         </a>
     </div>
 
@@ -242,11 +243,6 @@
 
             requestAnimationFrame(drawBackground);
         }
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
 
         drawBackground();
     </script>
