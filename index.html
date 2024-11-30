@@ -14,7 +14,6 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #121212;
             color: white;
             overflow-x: hidden;
         }
@@ -26,7 +25,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://www.example.com/animated-chart.gif') center center / cover no-repeat;
+            background: url('https://www.tradingview.com/widgetembed/?frameElementId=tradingview_54a0d&symbol=BTCUSD&interval=15&hidesidetoolbar=1&theme=dark') center center / cover no-repeat;
+            background-size: cover;
             z-index: -1;
             animation: moveBackground 30s infinite linear;
         }
@@ -49,6 +49,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            transition: background 0.3s ease;
         }
 
         .logo-container img {
@@ -74,7 +75,7 @@
             font-weight: bold;
             text-transform: uppercase;
             font-size: 18px;
-            transition: color 0.3s;
+            transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
@@ -145,6 +146,22 @@
             bottom: 0;
             width: 100%;
         }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo-container img {
+                width: 150px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -195,11 +212,12 @@
     </footer>
 
     <script>
-        const accordions = document.getElementsByClassName("accordion");
-        for (let i = 0; i < accordions.length; i++) {
-            accordions[i].addEventListener("click", function() {
+        // JavaScript for Accordion functionality
+        let acc = document.getElementsByClassName("accordion");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
-                const panel = this.nextElementSibling;
+                let panel = this.nextElementSibling;
                 if (panel.style.display === "block") {
                     panel.style.display = "none";
                 } else {
