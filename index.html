@@ -11,11 +11,12 @@
             padding: 0;
             font-family: 'Arial', sans-serif;
             color: #fff;
-            background: #000;
-            overflow-x: hidden; /* جلوگیری از پیمایش افقی */
+            overflow-x: hidden;
             height: 100vh; /* تنظیم ارتفاع برای تمام صفحه */
             display: flex;
             flex-direction: column;
+            background: #000;
+            position: relative;
         }
 
         header {
@@ -73,23 +74,21 @@
             margin-bottom: 20px;
         }
 
-        /* دکمه‌ها */
-        #hero .buttons {
+        .buttons {
             display: flex;
-            flex-direction: column; /* به صورت ستونی */
+            flex-direction: column;
             align-items: center;
             gap: 20px;
         }
 
-        /* برای ردیفی کردن دکمه‌های اینستاگرام و تیک تاک */
         .social-buttons {
             display: flex;
-            gap: 20px; /* فاصله بین دکمه‌ها */
+            gap: 20px;
             justify-content: center;
             align-items: center;
         }
 
-        #hero .buttons a {
+        .buttons a {
             display: inline-block;
             padding: 15px 30px;
             margin: 10px;
@@ -101,7 +100,7 @@
             transition: 0.3s;
         }
 
-        #hero .buttons a:hover {
+        .buttons a:hover {
             background-color: #fff;
             color: #00ffcc;
         }
@@ -120,9 +119,16 @@
             width: 100%;
             height: 100%;
             z-index: 0;
+            background-image: url('https://www.tradingview.com/x/BxRJhlzj/');
+            background-size: cover; /* سایز مناسب */
+            animation: moveBackground 30s linear infinite; /* حرکت پس‌زمینه */
         }
 
-        /* استایل آیکون‌ها که در پایین صفحه قرار دارند */
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: -1000px 0; }
+        }
+
         .social-icons {
             position: fixed;
             bottom: 20px;
@@ -143,7 +149,6 @@
             transform: scale(1.2);
         }
 
-        /* استایل باکس‌های "درباره من" و "خدمات ما" */
         .info-box {
             background-color: rgba(0, 255, 204, 0.1);
             border: 2px solid #00ffcc;
@@ -188,7 +193,6 @@
             <h1>سامیر CRFx</h1>
             <p>۵ سال تجربه در بازار فارکس | یادگیری حرفه‌ای و رایگان</p>
             <div class="buttons">
-                <!-- دکمه‌های اینستاگرام و تیک تاک در کنار هم -->
                 <div class="social-buttons">
                     <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
                     <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roOWIflDro&_r=1" target="_blank">تیک‌تاک</a>
@@ -226,29 +230,27 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/1200px-Instagram_logo_2022.svg.png" alt="اینستاگرام">
         </a>
         <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roOWIflDro&_r=1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/TikTok_logo_2018.svg" alt="تیک‌تاک">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/TikTok_logo_2021.svg" alt="تیک‌تاک">
         </a>
         <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="یوتیوب">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/YouTube_logo_2015.png" alt="یوتیوب">
         </a>
         <a href="https://t.me/milionersho_cRFx" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_logo.svg/1280px-Telegram_2019_logo.svg.png" alt="تلگرام">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Telegram_Logo.svg" alt="تلگرام">
         </a>
     </div>
 
     <script>
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
-
-        // تنظیم ابعاد canvas
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
         function drawBackground() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // رسم الگو
-            ctx.fillStyle = 'rgba(0, 255, 204, 0.6)';
+            // رسم پس زمینه متحرک
+            ctx.fillStyle = 'rgba(255, 0, 0, 0.3)';
             ctx.beginPath();
             ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 5 + 1, 0, Math.PI * 2);
             ctx.fill();
