@@ -3,43 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Forex Chart with Enhanced Price Action Patterns</title>
+    <title>Dynamic Forex Chart with Price Action Patterns</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
             overflow: hidden;
-            background: linear-gradient(120deg, #001f3f, #003366);
             display: flex;
             justify-content: center;
             align-items: center;
+            background: linear-gradient(120deg, #001f3f, #003366);
+            animation: backgroundAnimation 5s infinite alternate;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background: linear-gradient(120deg, #001f3f, #003366);
+            }
+            50% {
+                background: linear-gradient(120deg, #003366, #005f99);
+            }
+            100% {
+                background: linear-gradient(120deg, #001f3f, #005f99);
+            }
         }
 
         #chartCanvas {
             position: absolute;
             width: 100%;
             height: 100%;
+            background-color: transparent;
         }
 
-        body {
-            animation: gradientBackground 10s infinite alternate;
+        /* Title Animation */
+        .title {
+            font-size: 36px;
+            color: #fff;
+            text-align: center;
+            z-index: 10;
+            position: absolute;
+            top: 20px;
+            font-family: Arial, sans-serif;
+            animation: fadeInOut 5s ease-in-out infinite;
         }
 
-        @keyframes gradientBackground {
+        @keyframes fadeInOut {
             0% {
-                background: linear-gradient(120deg, #001f3f, #003366);
+                opacity: 0;
             }
             50% {
-                background: linear-gradient(120deg, #003366, #001f3f);
+                opacity: 1;
             }
             100% {
-                background: linear-gradient(120deg, #001f3f, #005f99);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
+    <div class="title">Welcome to Dynamic Forex Chart</div>
     <canvas id="chartCanvas"></canvas>
     <script>
         const canvas = document.getElementById('chartCanvas');
@@ -54,9 +77,9 @@
         const spaceBetween = 8;
         const waveAmplitude = 20;
 
-        // ایجاد کندل جدید با ویژگی‌های خاص و الگوهای قیمتی
+        // Function to create dynamic candlesticks with price action patterns
         function createCandlestick() {
-            const x = canvas.width + candleWidth;  // شروع کندل از خارج صفحه
+            const x = canvas.width + candleWidth;
             const y = Math.random() * canvas.height;
             let open = Math.random() * 50 + y;
             let close = Math.random() * 50 + y;
@@ -66,40 +89,36 @@
             const speed = Math.random() * 1 + 0.8;
             const phase = Math.random() * Math.PI * 2;
 
-            // ایجاد کندل خاص (الگوهای پرایس اکشن)
+            // Create random price action patterns
             const patternChance = Math.random();
             if (patternChance < 0.1) {
-                // Doji (الگوی دوجی)
                 close = open;
                 high = close + 10;
                 low = close - 10;
-                color = 'rgba(255, 255, 255, 0.6)'; // رنگ سفید برای Doji
+                color = 'rgba(255, 255, 255, 0.6)';
             } else if (patternChance < 0.2) {
-                // Hammer (چکش)
                 high = open + 5;
                 low = close - 30;
-                color = 'rgba(0, 255, 255, 0.8)'; // رنگ آبی برای چکش
+                color = 'rgba(0, 255, 255, 0.8)';
             } else if (patternChance < 0.3) {
-                // Shooting Star (شهاب سنگ)
                 low = close - 5;
                 high = open + 30;
-                color = 'rgba(255, 255, 0, 0.8)'; // رنگ زرد برای شهاب سنگ
+                color = 'rgba(255, 255, 0, 0.8)';
             } else if (patternChance < 0.4) {
-                // Engulfing (پوشا)
                 const prevCandle = candlesticks[candlesticks.length - 1];
                 if (prevCandle) {
                     open = prevCandle.close - 20;
                     close = prevCandle.open + 20;
                     high = Math.max(open, close) + 10;
                     low = Math.min(open, close) - 10;
-                    color = 'rgba(0, 255, 0, 1)'; // رنگ سبز برای Engulfing
+                    color = 'rgba(0, 255, 0, 1)';
                 }
             }
 
             candlesticks.push({ x, y, open, close, high, low, color, speed, phase });
         }
 
-        // رسم کندل‌ها با انیمیشن‌های جذاب
+        // Drawing the candlesticks with smooth animations
         function drawCandlesticks() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -121,17 +140,17 @@
                     Math.abs(candle.open - candle.close)
                 );
 
-                // حرکت کندل‌ها به سمت چپ
-                const randomBounce = Math.sin(Math.random() * Math.PI) * 3; // حرکت نوسانی تصادفی
+                // Moving the candlesticks to the left
+                const randomBounce = Math.sin(Math.random() * Math.PI) * 3;
                 candle.x -= candle.speed + randomBounce;
 
-                // حذف کندل‌های خارج از صفحه
+                // Remove candlesticks when out of screen
                 if (candle.x < -candleWidth) {
                     candlesticks.splice(index, 1);
                 }
             });
 
-            // اضافه کردن کندل جدید
+            // Add new candlesticks dynamically
             if (candlesticks.length < maxCandles) {
                 createCandlestick();
             }
