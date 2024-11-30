@@ -14,7 +14,7 @@
 
         body {
             font-family: 'Vazir', sans-serif;
-            background-color: #000;
+            background-color: #121212;
             color: #fff;
             overflow-x: hidden;
         }
@@ -23,8 +23,9 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px;
-            background-color: #111;
+            padding: 40px;
+            background-color: #1a1a1a;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         header .logo-container {
@@ -33,14 +34,16 @@
         }
 
         header .logo {
-            width: 60px;
-            height: 60px;
-            margin-right: 10px;
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            transition: all 0.3s ease;
         }
 
         header h1 {
-            font-size: 24px;
+            font-size: 32px;
             color: #00ffcc;
+            text-transform: uppercase;
         }
 
         nav ul {
@@ -49,54 +52,138 @@
         }
 
         nav ul li {
-            margin: 0 15px;
+            margin: 0 20px;
+            position: relative;
         }
 
         nav ul li a {
             text-decoration: none;
             color: #00ffcc;
             font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
         }
 
-        main {
-            padding: 40px 20px;
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        .btn-hover-animate {
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #ffcc00;
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+
+        nav ul li a:hover .btn-hover-animate {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        .hero {
+            position: relative;
+            height: 90vh;
+            background: url('https://yourchartanimationlink.com') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
         }
 
-        .section-title {
-            font-size: 28px;
+        .hero h2 {
+            font-size: 48px;
+            color: #fff;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            letter-spacing: 2px;
+        }
+
+        .section {
+            padding: 80px 20px;
+            text-align: center;
+            background: #1a1a1a;
+            transition: background 0.3s ease;
+        }
+
+        .section:hover {
+            background: #00ffcc;
+        }
+
+        .section h2 {
+            font-size: 40px;
             margin-bottom: 20px;
-            color: #00ffcc;
-        }
-
-        section p, section ul {
-            font-size: 18px;
-            margin-bottom: 40px;
-        }
-
-        ul {
-            list-style: none;
-        }
-
-        ul li a {
-            color: #00ffcc;
-            text-decoration: none;
-            font-size: 18px;
-            display: block;
-            margin: 10px 0;
-        }
-
-        footer {
-            background-color: #111;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .footer-content p {
-            font-size: 16px;
             color: #fff;
         }
 
+        .section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        .section ul {
+            list-style: none;
+        }
+
+        .section ul li a {
+            color: #00ffcc;
+            font-size: 22px;
+            display: block;
+            margin: 15px 0;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .section ul li a:hover {
+            color: #ffcc00;
+        }
+
+        footer {
+            background-color: #1a1a1a;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            color: #ffcc00;
+        }
+
+        /* Animation Effects */
+        .fadeInUp {
+            animation: fadeInUp 1s ease-in-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Background Animation for Price Chart */
         .background-animation {
             position: absolute;
             top: 0;
@@ -106,6 +193,7 @@
             background: url('https://yourchartanimationlink.com') repeat;
             animation: moveBackground 30s linear infinite;
             opacity: 0.1;
+            z-index: -1;
         }
 
         @keyframes moveBackground {
@@ -119,6 +207,7 @@
     </style>
 </head>
 <body>
+
     <header>
         <div class="logo-container">
             <img src="https://raw.githubusercontent.com/93f518db-c5bc-4595-8156-4cff6212603a/main/logo.png" alt="Logo" class="logo">
@@ -126,42 +215,42 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما</a></li>
-                <li><a href="#about">درباره من</a></li>
-                <li><a href="#services">خدمات ما</a></li>
+                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات ما <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="about">
-            <div class="section-title">درباره من</div>
-            <p>من پنج سال است که در بازار فارکس فعالیت دارم و هدفم این است که با آموزش‌های رایگان به شما کمک کنم تا در این بازار موفق شوید.</p>
-        </section>
+    <section class="hero">
+        <h2 class="fadeInUp">آموزش فارکس به صورت رایگان</h2>
+    </section>
 
-        <section id="services">
-            <div class="section-title">خدمات ما</div>
-            <ul>
-                <li><a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a></li>
-                <li><a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a></li>
-                <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
-                <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
-                <li><a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a></li>
-                <li><a href="https://t.me/Samircrfx_signal" target="_blank">سیگنال VIP رایگان</a></li>
-            </ul>
-        </section>
-    </main>
+    <section id="about" class="section fadeInUp">
+        <h2>درباره من</h2>
+        <p>من پنج سال است که در بازار فارکس فعالیت دارم و هدفم این است که با آموزش‌های رایگان به شما کمک کنم تا در این بازار موفق شوید.</p>
+    </section>
+
+    <section id="services" class="section fadeInUp">
+        <h2>خدمات ما</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/samircrfxgroup/profilecard/?igsh=MmFzYnNlMTY3YW4z" target="_blank">اینستاگرام</a></li>
+            <li><a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a></li>
+            <li><a href="https://t.me/milionersho_cRFx" target="_blank">تلگرام</a></li>
+            <li><a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a></li>
+            <li><a href="https://t.me/cRFxfamily" target="_blank">ادمین اول</a></li>
+            <li><a href="https://t.me/Samircrfx_signal" target="_blank">سیگنال VIP رایگان</a></li>
+        </ul>
+    </section>
 
     <footer id="contact">
-        <div class="footer-content">
-            <p>برای تماس با ما، لطفاً از طریق لینک‌های بالا اقدام کنید.</p>
-        </div>
+        <p>برای تماس با ما و دریافت آموزش‌های بیشتر، لطفاً از طریق لینک‌های بالا اقدام کنید.</p>
     </footer>
 
     <div class="background-animation"></div>
 
     <script>
-        // Animation for the background
+        // Animation for background movement
         document.addEventListener('DOMContentLoaded', function() {
             const background = document.querySelector('.background-animation');
             setInterval(function() {
@@ -169,5 +258,6 @@
             }, 1000);
         });
     </script>
+
 </body>
 </html>
