@@ -13,6 +13,9 @@
             color: #fff;
             background: #000;
             overflow-x: hidden; /* جلوگیری از پیمایش افقی */
+            height: 100vh; /* تنظیم ارتفاع برای تمام صفحه */
+            display: flex;
+            flex-direction: column;
         }
 
         header {
@@ -24,10 +27,6 @@
             position: fixed;
             width: 100%;
             z-index: 10;
-        }
-
-        header .logo img {
-            width: 120px;
         }
 
         header nav ul {
@@ -68,6 +67,7 @@
             text-align: center;
             min-height: 100vh;
             position: relative;
+            z-index: 1;
         }
 
         #hero {
@@ -76,12 +76,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-            background: #000;
-            z-index: 1;
-        }
-
-        #hero .content {
-            z-index: 1;
         }
 
         #hero .content h1 {
@@ -95,7 +89,7 @@
             margin-bottom: 20px;
         }
 
-        /* لیست دکمه‌ها */
+        /* دکمه‌ها */
         #hero .buttons {
             display: flex;
             flex-direction: column;
@@ -128,30 +122,17 @@
         }
 
         #bgCanvas {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: 0;
         }
-
-        section {
-            padding: 50px 20px;
-        }
-
-        /* کاهش فاصله بین بخش‌ها */
-        #about, #services {
-            margin-bottom: 30px;
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <!-- لوگو حذف شده -->
-        </div>
         <nav>
             <ul>
                 <li><a href="#about">درباره من</a></li>
@@ -207,6 +188,7 @@
         const canvas = document.getElementById('bgCanvas');
         const ctx = canvas.getContext('2d');
 
+        // تنظیم ابعاد canvas
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
 
