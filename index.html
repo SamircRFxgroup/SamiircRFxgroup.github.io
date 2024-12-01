@@ -31,7 +31,9 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav ul li {
@@ -41,9 +43,9 @@
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: bold;
-            padding: 12px 25px;
+            padding: 10px 20px;
             background-color: #007f7f;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -193,9 +195,10 @@
         /* Admin Box Styles */
         .admin-boxes {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             justify-content: center;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .admin-box {
@@ -256,7 +259,7 @@
         .programs-section .programs-row {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 15px;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
@@ -264,11 +267,11 @@
         .programs-section .programs-row .program-box {
             background-color: #3b5c5c;
             color: #fff;
-            padding: 20px;
+            padding: 15px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 180px;
+            width: 150px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -279,30 +282,9 @@
 
         .programs-section .programs-row .program-box a {
             color: #fff;
-            font-size: 18px;
+            font-size: 16px;
             text-decoration: none;
             display: block;
-        }
-
-        .programs-section ul {
-            list-style: none;
-            margin-top: 30px;
-            padding: 0;
-            text-align: center;
-        }
-
-        .programs-section ul li a {
-            color: #fff;
-            font-size: 20px;
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .programs-section ul li a:hover {
-            color: #ffcc00;
         }
 
         /* About Me Section */
@@ -341,109 +323,130 @@
             background-color: #ff9900;
             transform: translateY(-3px);
         }
+
+        /* Media Query for Smaller Screens */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+                padding: 8px 15px;
+            }
+
+            .programs-section .programs-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .program-box {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
     </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#programs-section">برنامه‌ها</a></li>
+                <li><a href="#admin-boxes">ادمین‌ها</a></li>
+                <li><a href="#about-me-section">درباره من</a></li>
+            </ul>
+        </nav>
+    </header>
 
-<header>
-    <nav>
-        <ul>
-            <li><a href="#programs-section">برنامه‌ها</a><div class="btn-hover-animate"></div></li>
-            <li><a href="#admin-boxes">ادمین‌ها</a><div class="btn-hover-animate"></div></li>
-            <li><a href="#about-me-section">درباره من</a><div class="btn-hover-animate"></div></li>
-        </ul>
-    </nav>
-</header>
+    <section class="hero">
+        <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
+    </section>
 
-<section class="hero">
-    <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
-</section>
-
-<section class="programs-section fadeInUp" id="programs-section">
-    <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
-    <div class="programs-row">
-        <div class="program-box">
-            <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
+    <section class="programs-section fadeInUp" id="programs-section">
+        <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
+        <div class="programs-row">
+            <div class="program-box">
+                <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
+            </div>
+            <div class="program-box">
+                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
+            </div>
+            <div class="program-box">
+                <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
+            </div>
+            <div class="program-box">
+                <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
+            </div>
         </div>
-        <div class="program-box">
-            <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
+    </section>
+
+    <section class="admin-boxes fadeInUp" id="admin-boxes">
+        <div class="admin-box">
+            <h3>ادمین خدمات</h3>
+            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
+            <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
         </div>
-        <div class="program-box">
-            <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
+        <div class="admin-box">
+            <h3>ادمین VIP</h3>
+            <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
+            <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
         </div>
-        <div class="program-box">
-            <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section class="admin-boxes fadeInUp" id="admin-boxes">
-    <div class="admin-box">
-        <h3>ادمین خدمات</h3>
-        <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
-        <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
-    </div>
-    <div class="admin-box">
-        <h3>ادمین VIP</h3>
-        <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
-        <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
-    </div>
-</section>
+    <section class="about-me-section fadeInUp" id="about-me-section">
+        <h3>درباره من</h3>
+        <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
+        <p><strong>💎ثروت در دستان شما خواهد بود💎</strong></p>
+    </section>
 
-<section class="about-me-section fadeInUp" id="about-me-section">
-    <h3>درباره من</h3>
-    <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
-    <p><strong>💎ثروت در دستان شما خواهد بود💎</strong></p>
-</section>
+    <footer>
+        <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
+    </footer>
 
-<footer>
-    <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
-</footer>
+    <div class="background-animation"></div>
 
-<div class="background-animation"></div>
+    <script>
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.fadeInUp');
+            const triggerBottom = window.innerHeight / 5 * 4;
 
-<script>
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('.fadeInUp');
-        const triggerBottom = window.innerHeight / 5 * 4;
+            sections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        });
 
-        sections.forEach(function(section) {
-            const sectionTop = section.getBoundingClientRect().top;
-            if (sectionTop < triggerBottom) {
-                section.classList.add('show');
-            } else {
-                section.classList.remove('show');
+        document.addEventListener("DOMContentLoaded", function() {
+            const chartBackground = document.querySelector('.background-animation');
+            if (chartBackground) {
+                chartBackground.style.animation = "moveBackground 30s linear infinite";
             }
         });
-    });
 
-    document.addEventListener("DOMContentLoaded", function() {
-        const chartBackground = document.querySelector('.background-animation');
-        if (chartBackground) {
-            chartBackground.style.animation = "moveBackground 30s linear infinite";
-        }
-    });
+        const buttons = document.querySelectorAll('.admin-btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                button.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                button.style.transform = 'translateY(0)';
+            });
+        });
 
-    const buttons = document.querySelectorAll('.admin-btn');
-    buttons.forEach(button => {
-        button.addEventListener('mouseenter', function() {
-            button.style.transform = 'translateY(-3px)';
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                link.style.transform = 'scale(1.05)';
+            });
+            link.addEventListener('mouseleave', function() {
+                link.style.transform = 'scale(1)';
+            });
         });
-        button.addEventListener('mouseleave', function() {
-            button.style.transform = 'translateY(0)';
-        });
-    });
-
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', function() {
-            link.style.transform = 'scale(1.05)';
-        });
-        link.addEventListener('mouseleave', function() {
-            link.style.transform = 'scale(1)';
-        });
-    });
-</script>
-
+    </script>
 </body>
 </html>
