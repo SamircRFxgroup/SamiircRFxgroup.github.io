@@ -346,8 +346,9 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">خانه</a><span class="btn-hover-animate"></span></li>
                 <li><a href="#about" id="about-btn">درباره من</a><span class="btn-hover-animate"></span></li>
+                <li><a href="#programs">برنامه‌ها و شبکه‌های اجتماعی</a><span class="btn-hover-animate"></span></li>
+                <li><a href="#admins">ادمین‌ها</a><span class="btn-hover-animate"></span></li>
             </ul>
         </nav>
     </header>
@@ -356,7 +357,7 @@
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
-    <section class="programs-section fadeInUp">
+    <section id="programs" class="programs-section fadeInUp">
         <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
         <div class="programs-row">
             <div class="program-box">
@@ -374,7 +375,7 @@
         </div>
     </section>
 
-    <section class="admin-boxes fadeInUp">
+    <section id="admins" class="admin-boxes fadeInUp">
         <div class="admin-box">
             <h3>ادمین خدمات</h3>
             <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
@@ -444,6 +445,20 @@
         document.getElementById("about-btn").addEventListener("click", function(event) {
             event.preventDefault();
             document.getElementById("about").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("programs-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("programs").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
+
+        document.getElementById("admins-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("admins").scrollIntoView({
                 behavior: "smooth"
             });
         });
