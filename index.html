@@ -309,5 +309,48 @@
 
     <div class="background-animation"></div>
 
+    <script>
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.fadeInUp');
+            const triggerBottom = window.innerHeight / 5 * 4;
+
+            sections.forEach(function(section) {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop < triggerBottom) {
+                    section.classList.add('show');
+                } else {
+                    section.classList.remove('show');
+                }
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const chartBackground = document.querySelector('.background-animation');
+            if (chartBackground) {
+                chartBackground.style.animation = "moveBackground 30s linear infinite";
+            }
+        });
+
+        const buttons = document.querySelectorAll('.admin-btn');
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                button.style.transform = 'translateY(-3px)';
+            });
+            button.addEventListener('mouseleave', function() {
+                button.style.transform = 'translateY(0)';
+            });
+        });
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                link.style.transform = 'scale(1.05)';
+            });
+            link.addEventListener('mouseleave', function() {
+                link.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+
 </body>
 </html>
