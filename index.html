@@ -190,154 +190,50 @@
             }
         }
 
-        /* Admin Box Styles */
-        .admin-boxes {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .admin-box {
-            background-color: #5f6368;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 250px;
-            transition: transform 0.3s ease;
-        }
-
-        .admin-box:hover {
-            transform: translateY(-5px);
-        }
-
-        .admin-box h3 {
-            color: #fff;
-            font-size: 24px;
-            margin-bottom: 15px;
-        }
-
-        .admin-box p {
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
         .admin-btn {
-            display: inline-block;
-            padding: 10px 20px;
             background-color: #007f7f;
             color: #fff;
-            font-size: 16px;
-            text-decoration: none;
+            padding: 15px 30px;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-decoration: none;
+            font-weight: bold;
             transition: transform 0.3s ease;
         }
 
         .admin-btn:hover {
-            background-color: #ffcc00;
-            transform: translateY(-3px);
-        }
-
-        /* Programs Section */
-        .programs-section {
-            padding: 80px 20px;
-            text-align: center;
-            background: #1a1a1a;
-        }
-
-        .programs-section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .programs-section .programs-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .programs-section .programs-row .program-box {
-            background-color: #3b5c5c;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 180px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .programs-section .programs-row .program-box:hover {
-            background-color: #ffcc00;
             transform: translateY(-5px);
         }
 
-        .programs-section .programs-row .program-box a {
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .programs-section ul {
-            list-style: none;
+        .admin-box, .programs-box {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
             margin-top: 30px;
-            padding: 0;
-            text-align: center;
         }
 
-        .programs-section ul li a {
-            color: #fff;
-            font-size: 20px;
+        .programs-box .program, .admin-box .admin {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .programs-box .program:hover, .admin-box .admin:hover {
+            background-color: #00ffcc;
+        }
+
+        .programs-box .program a, .admin-box .admin a {
             display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .programs-section ul li a:hover {
-            color: #ffcc00;
-        }
-
-        /* About Me Box */
-        .about-box {
-            background-color: #5f6368;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 50px;
-        }
-
-        .about-box h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
             color: #fff;
-        }
-
-        .about-box p {
-            color: #ddd;
             font-size: 18px;
-            margin-bottom: 20px;
+            text-decoration: none;
+            margin-bottom: 10px;
         }
 
-        .about-box .highlight {
-            font-size: 20px;
+        .programs-box .program a:hover, .admin-box .admin a:hover {
             color: #ffcc00;
-        }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -346,8 +242,9 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">خانه</a><span class="btn-hover-animate"></span></li>
-                <li><a href="#about" id="about-btn">درباره من</a><span class="btn-hover-animate"></span></li>
+                <li><a href="#about" id="about-btn">درباره من <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
@@ -356,45 +253,40 @@
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
-    <section class="programs-section fadeInUp">
-        <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
-        <div class="programs-row">
-            <div class="program-box">
-                <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
-            </div>
-            <div class="program-box">
-                <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="admin-boxes fadeInUp">
-        <div class="admin-box">
-            <h3>ادمین خدمات</h3>
-            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
-        </div>
-        <div class="admin-box">
-            <h3>ادمین VIP</h3>
-            <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
-        </div>
-    </section>
-
-    <section id="about" class="about-box">
-        <h3>درباره من</h3>
+    <section id="about" class="section fadeInUp">
+        <h2>درباره من</h2>
         <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
-        <p class="highlight">💎ثروت در دستان شما خواهد بود💎</p>
+        <p><strong>💎ثروت در دستان شما خواهد بود💎</strong></p>
+    </section>
+
+    <section id="services" class="section fadeInUp">
+        <h2>خدمات ما</h2>
+        <div class="programs-box">
+            <div class="program">
+                <a href="https://www.instagram.com/samircrfxgroup" target="_blank">اینستاگرام</a>
+                <a href="https://www.tiktok.com/@samircrfxgroup" target="_blank">تیک تاک</a>
+            </div>
+            <div class="program">
+                <a href="https://t.me/milionersho_cRFx" target="_blank">کانال تلگرام</a>
+                <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank">یوتیوب</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="admin" class="section fadeInUp">
+        <h2>ادمین ها</h2>
+        <div class="admin-box">
+            <div class="admin">
+                <a href="https://t.me/cRFxfamily" target="_blank">ادمین خدمات مشتری</a>
+            </div>
+            <div class="admin">
+                <a href="https://t.me/Samircrfx_signal" target="_blank">ادمین عضویت VIP</a>
+            </div>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
+        <p>© 2024 Samircrfxgroup | تمامی حقوق محفوظ است.</p>
     </footer>
 
     <div class="background-animation"></div>
@@ -448,6 +340,5 @@
             });
         });
     </script>
-
 </body>
 </html>
