@@ -31,9 +31,7 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: 20px;
         }
 
         nav ul li {
@@ -43,9 +41,9 @@
         nav ul li a {
             text-decoration: none;
             color: #fff;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: bold;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #007f7f;
             border-radius: 5px;
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -195,10 +193,9 @@
         /* Admin Box Styles */
         .admin-boxes {
             display: flex;
-            gap: 20px;
+            gap: 30px;
             justify-content: center;
             margin-top: 20px;
-            flex-wrap: wrap;
         }
 
         .admin-box {
@@ -259,7 +256,7 @@
         .programs-section .programs-row {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 30px;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
@@ -267,11 +264,11 @@
         .programs-section .programs-row .program-box {
             background-color: #3b5c5c;
             color: #fff;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 150px;
+            width: 180px;
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
@@ -282,79 +279,75 @@
 
         .programs-section .programs-row .program-box a {
             color: #fff;
-            font-size: 16px;
+            font-size: 18px;
             text-decoration: none;
             display: block;
         }
 
-        /* About Me Section */
-        .about-me-section {
-            padding: 80px 20px;
-            background: #333;
+        .programs-section ul {
+            list-style: none;
+            margin-top: 30px;
+            padding: 0;
             text-align: center;
-            margin-top: 50px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
-        .about-me-section h3 {
-            font-size: 24px;
+        .programs-section ul li a {
             color: #fff;
-            margin-bottom: 20px;
-        }
-
-        .about-me-section p {
-            font-size: 18px;
-            color: #ddd;
-            margin-bottom: 20px;
-        }
-
-        .about-me-btn {
-            padding: 10px 20px;
-            background-color: #ffcc00;
-            color: #333;
-            font-size: 16px;
+            font-size: 20px;
+            display: block;
+            margin: 10px 0;
             text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: transform 0.3s ease;
+            position: relative;
+            transition: color 0.3s ease;
         }
 
-        .about-me-btn:hover {
-            background-color: #ff9900;
-            transform: translateY(-3px);
+        .programs-section ul li a:hover {
+            color: #ffcc00;
         }
 
-        /* Media Query for Smaller Screens */
-        @media (max-width: 768px) {
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
+        /* About Me Box */
+        .about-box {
+            background-color: #5f6368;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            margin-top: 50px;
+        }
 
-            nav ul li a {
-                font-size: 12px;
-                padding: 8px 15px;
-            }
+        .about-box h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
 
-            .programs-section .programs-row {
-                flex-direction: column;
-                align-items: center;
-            }
+        .about-box p {
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
 
-            .program-box {
-                width: 100%;
-                margin-bottom: 10px;
-            }
+        .about-box .highlight {
+            font-size: 20px;
+            color: #ffcc00;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
+
     <header>
         <nav>
             <ul>
-                <li><a href="#programs-section">برنامه‌ها</a></li>
-                <li><a href="#admin-boxes">ادمین‌ها</a></li>
-                <li><a href="#about-me-section">درباره من</a></li>
+                <li><a href="#">خانه</a><span class="btn-hover-animate"></span></li>
+                <li><a href="#about" id="about-btn">درباره من</a><span class="btn-hover-animate"></span></li>
             </ul>
         </nav>
     </header>
@@ -363,7 +356,7 @@
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
-    <section class="programs-section fadeInUp" id="programs-section">
+    <section class="programs-section fadeInUp">
         <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
         <div class="programs-row">
             <div class="program-box">
@@ -381,7 +374,7 @@
         </div>
     </section>
 
-    <section class="admin-boxes fadeInUp" id="admin-boxes">
+    <section class="admin-boxes fadeInUp">
         <div class="admin-box">
             <h3>ادمین خدمات</h3>
             <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
@@ -394,10 +387,10 @@
         </div>
     </section>
 
-    <section class="about-me-section fadeInUp" id="about-me-section">
+    <section id="about" class="about-box">
         <h3>درباره من</h3>
         <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
-        <p><strong>💎ثروت در دستان شما خواهد بود💎</strong></p>
+        <p class="highlight">💎ثروت در دستان شما خواهد بود💎</p>
     </section>
 
     <footer>
@@ -447,6 +440,14 @@
                 link.style.transform = 'scale(1)';
             });
         });
+
+        document.getElementById("about-btn").addEventListener("click", function(event) {
+            event.preventDefault();
+            document.getElementById("about").scrollIntoView({
+                behavior: "smooth"
+            });
+        });
     </script>
+
 </body>
 </html>
