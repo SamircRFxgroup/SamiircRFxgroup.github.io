@@ -305,103 +305,153 @@
             color: #ffcc00;
         }
 
+        /* About Box Styles */
+        .about-box {
+            background-color: #4a6a6a;
+            color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            display: none;
+            transition: transform 0.3s ease;
+        }
+
+        .about-box h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .about-box p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .about-btn {
+            background-color: #007f7f;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background-color: #ffcc00;
+        }
+
+        .about-btn:active {
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <nav>
+        <ul>
+            <li><a href="#about" class="about-btn">درباره من</a></li>
+        </ul>
+    </nav>
+</header>
 
-    <section class="hero fadeInUp">
-        <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
-    </section>
+<section class="hero">
+    <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
+</section>
 
-    <section class="programs-section fadeInUp">
-        <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
-        <div class="programs-row">
-            <div class="program-box">
-                <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
-            </div>
-            <div class="program-box">
-                <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
-            </div>
+<section class="programs-section fadeInUp">
+    <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
+    <div class="programs-row">
+        <div class="program-box">
+            <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
         </div>
-    </section>
-
-    <section class="admin-boxes fadeInUp">
-        <div class="admin-box">
-            <h3>ادمین خدمات</h3>
-            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
+        <div class="program-box">
+            <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
         </div>
-        <div class="admin-box">
-            <h3>ادمین VIP</h3>
-            <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
+        <div class="program-box">
+            <a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a>
         </div>
-    </section>
+        <div class="program-box">
+            <a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
-    </footer>
+<section class="admin-boxes fadeInUp">
+    <div class="admin-box">
+        <h3>ادمین خدمات</h3>
+        <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
+        <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
+    </div>
+    <div class="admin-box">
+        <h3>ادمین VIP</h3>
+        <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
+        <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
+    </div>
+</section>
 
-    <div class="background-animation"></div>
+<!-- About Me Section -->
+<section id="about" class="about-box fadeInUp">
+    <h3>درباره من</h3>
+    <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
+    <p>💎ثروت در دستان شما خواهد بود💎</p>
+</section>
 
-    <script>
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('.fadeInUp');
-            const triggerBottom = window.innerHeight / 5 * 4;
+<footer>
+    <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
+</footer>
 
-            sections.forEach(function(section) {
-                const sectionTop = section.getBoundingClientRect().top;
-                if (sectionTop < triggerBottom) {
-                    section.classList.add('show');
-                } else {
-                    section.classList.remove('show');
-                }
-            });
-        });
+<div class="background-animation"></div>
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const chartBackground = document.querySelector('.background-animation');
-            if (chartBackground) {
-                chartBackground.style.animation = "moveBackground 30s linear infinite";
+<script>
+    document.querySelector('.about-btn').addEventListener('click', function() {
+        document.querySelector('#about').scrollIntoView({ behavior: 'smooth' });
+    });
+
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('.fadeInUp');
+        const triggerBottom = window.innerHeight / 5 * 4;
+
+        sections.forEach(function(section) {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < triggerBottom) {
+                section.classList.add('show');
+            } else {
+                section.classList.remove('show');
             }
         });
+    });
 
-        const buttons = document.querySelectorAll('.admin-btn');
-        buttons.forEach(button => {
-            button.addEventListener('mouseenter', function() {
-                button.style.transform = 'translateY(-3px)';
-            });
-            button.addEventListener('mouseleave', function() {
-                button.style.transform = 'translateY(0)';
-            });
-        });
+    document.addEventListener("DOMContentLoaded", function() {
+        const chartBackground = document.querySelector('.background-animation');
+        if (chartBackground) {
+            chartBackground.style.animation = "moveBackground 30s linear infinite";
+        }
+    });
 
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('mouseenter', function() {
-                link.style.transform = 'scale(1.05)';
-            });
-            link.addEventListener('mouseleave', function() {
-                link.style.transform = 'scale(1)';
-            });
+    const buttons = document.querySelectorAll('.admin-btn');
+    buttons.forEach(button => {
+        button.addEventListener('mouseenter', function() {
+            button.style.transform = 'translateY(-3px)';
         });
-    </script>
+        button.addEventListener('mouseleave', function() {
+            button.style.transform = 'translateY(0)';
+        });
+    });
+
+    const navLinks = document.querySelectorAll('nav ul li a');
+    navLinks.forEach(link => {
+        link.addEventListener('mouseenter', function() {
+            link.style.transform = 'scale(1.05)';
+        });
+        link.addEventListener('mouseleave', function() {
+            link.style.transform = 'scale(1)';
+        });
+    });
+</script>
 
 </body>
 </html>
