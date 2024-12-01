@@ -55,23 +55,6 @@
             transform: translateY(-5px);
         }
 
-        .btn-hover-animate {
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background-color: #ffcc00;
-            transform: scaleX(0);
-            transform-origin: bottom right;
-            transition: transform 0.3s ease;
-        }
-
-        nav ul li a:hover .btn-hover-animate {
-            transform: scaleX(1);
-            transform-origin: bottom left;
-        }
-
         .hero {
             position: relative;
             height: 90vh;
@@ -305,6 +288,33 @@
             color: #ffcc00;
         }
 
+        /* About Me Section */
+        #about-me {
+            display: none;
+            background-color: #2d2d2d;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            margin-top: 20px;
+        }
+
+        .about-btn {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #007f7f;
+            color: #fff;
+            font-size: 18px;
+            text-decoration: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .about-btn:hover {
+            background-color: #ffcc00;
+            transform: translateY(-3px);
+        }
+
     </style>
 </head>
 <body>
@@ -312,14 +322,15 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#about">درباره</a></li>
+                <li><a href="#services">خدمات</a></li>
+                <li><a href="#contact">تماس با ما</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero fadeInUp">
+    <section class="hero">
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
@@ -354,11 +365,18 @@
         </div>
     </section>
 
+    <section>
+        <a href="#about-me" class="about-btn">درباره من</a>
+    </section>
+
+    <section id="about-me">
+        <h3>درباره من</h3>
+        <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است. <br> <strong>💎ثروت در دستان شما خواهد بود💎</strong></p>
+    </section>
+
     <footer>
         <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
     </footer>
-
-    <div class="background-animation"></div>
 
     <script>
         window.addEventListener('scroll', function() {
@@ -402,6 +420,5 @@
             });
         });
     </script>
-
 </body>
 </html>
