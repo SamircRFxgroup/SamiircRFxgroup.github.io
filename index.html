@@ -190,121 +190,47 @@
             }
         }
 
-        /* Admin Box Styles */
-        .admin-boxes {
-            display: flex;
-            gap: 30px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .admin-box {
-            background-color: #5f6368;
+        .about-box {
+            background-color: #2b2b2b;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 250px;
-            transition: transform 0.3s ease;
+            margin-top: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        .admin-box:hover {
-            transform: translateY(-5px);
-        }
-
-        .admin-box h3 {
-            color: #fff;
-            font-size: 24px;
+        .about-box h3 {
+            color: #ffcc00;
             margin-bottom: 15px;
         }
 
-        .admin-box p {
-            color: #ddd;
-            margin-bottom: 20px;
+        .about-box p {
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 15px;
         }
 
         .admin-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #007f7f;
-            color: #fff;
-            font-size: 16px;
-            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #ffcc00;
             border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #121212;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
             transition: transform 0.3s ease;
         }
 
         .admin-btn:hover {
-            background-color: #ffcc00;
-            transform: translateY(-3px);
-        }
-
-        /* Programs Section */
-        .programs-section {
-            padding: 80px 20px;
-            text-align: center;
-            background: #1a1a1a;
-        }
-
-        .programs-section h2 {
-            font-size: 30px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .programs-section .programs-row {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .programs-section .programs-row .program-box {
-            background-color: #3b5c5c;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-            width: 180px;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-        }
-
-        .programs-section .programs-row .program-box:hover {
-            background-color: #ffcc00;
             transform: translateY(-5px);
+            background-color: #f39c12;
         }
 
-        .programs-section .programs-row .program-box a {
-            color: #fff;
-            font-size: 18px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .programs-section ul {
-            list-style: none;
+        .admin-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
             margin-top: 30px;
-            padding: 0;
-            text-align: center;
         }
-
-        .programs-section ul li a {
-            color: #fff;
-            font-size: 20px;
-            display: block;
-            margin: 10px 0;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s ease;
-        }
-
-        .programs-section ul li a:hover {
-            color: #ffcc00;
-        }
-
     </style>
 </head>
 <body>
@@ -314,46 +240,39 @@
             <ul>
                 <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
                 <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
-                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات ما <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero fadeInUp">
-        <h2>به دنیای تجزیه و تحلیل بازار خوش آمدید</h2>
+    <section class="hero">
+        <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
+        <h3>(ثروت در دستان شما خواهد بود)</h3>
     </section>
 
-    <section class="programs-section fadeInUp">
-        <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
-        <div class="programs-row">
-            <div class="program-box">
-                <a href="https://www.instagram.com/samircrfxgroup/" target="_blank">اینستاگرام</a>
-            </div>
-            <div class="program-box">
-                <a href="https://www.tiktok.com/@samircrfxgroup?_t=ZS-8roeKSmsiAe&_r=1" target="_blank">تیک تاک</a>
-            </div>
+    <section id="about" class="section fadeInUp">
+        <h2>درباره من</h2>
+        <div class="about-box">
+            <h3>به وب‌سایت رسمی Samircrfxgroup خوش آمدید!</h3>
+            <p>ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
+            <p>💎ثروت در دستان شما خواهد بود💎</p>
         </div>
-        <ul>
-            <li><a href="https://www.youtube.com/channel/UCsHwaUu4mH5QUx0NckQ0h6g" target="_blank">یوتیوب</a></li>
-            <li><a href="https://t.me/cRFxfamily" target="_blank">کانال تلگرام</a></li>
-        </ul>
     </section>
 
-    <section class="admin-boxes fadeInUp">
-        <div class="admin-box">
-            <h3>ادمین خدمات</h3>
-            <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/cRFxfamily" class="admin-btn">پیام به ادمین</a>
+    <section id="services" class="section fadeInUp">
+        <h2>خدمات ما</h2>
+        <div class="admin-container">
+            <a href="https://www.instagram.com/samircrfxgroup" target="_blank" class="admin-btn">اینستاگرام</a>
+            <a href="https://www.tiktok.com/@samircrfxgroup" target="_blank" class="admin-btn">تیک تاک</a>
         </div>
-        <div class="admin-box">
-            <h3>ادمین VIP</h3>
-            <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
-            <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
+        <div class="admin-container">
+            <a href="https://t.me/milionersho_cRFx" target="_blank" class="admin-btn">تلگرام</a>
+            <a href="https://www.youtube.com/@Samircrfxgroup" target="_blank" class="admin-btn">یوتیوب</a>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Samir cRFxgroup | همه حقوق محفوظ است</p>
+        <p>تمامی حقوق محفوظ است | <a href="#contact">تماس با ما</a></p>
     </footer>
 
     <div class="background-animation"></div>
@@ -402,4 +321,4 @@
     </script>
 
 </body>
-</html>  
+</html>
