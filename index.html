@@ -305,40 +305,6 @@
             color: #ffcc00;
         }
 
-        /* About Me Box */
-        .about-box {
-            background-color: #5f6368;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            width: 100%;
-            max-width: 800px;
-            margin: 0 auto;
-            margin-top: 50px;
-        }
-
-        .about-box h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .about-box p {
-            color: #ddd;
-            font-size: 18px;
-            margin-bottom: 20px;
-        }
-
-        .about-box .highlight {
-            font-size: 20px;
-            color: #ffcc00;
-        }
-
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
     </style>
 </head>
 <body>
@@ -346,13 +312,14 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">خانه</a><span class="btn-hover-animate"></span></li>
-                <li><a href="#about" id="about-btn">درباره من</a><span class="btn-hover-animate"></span></li>
+                <li><a href="#contact">تماس با ما <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#about">درباره من <span class="btn-hover-animate"></span></a></li>
+                <li><a href="#services">خدمات <span class="btn-hover-animate"></span></a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero">
+    <section class="hero fadeInUp">
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
@@ -385,12 +352,6 @@
             <p>برای دریافت سیگنال‌های VIP رایگان، به ادمین پیام بدهید.</p>
             <a href="https://t.me/Samircrfx_signal" class="admin-btn">پیام به ادمین</a>
         </div>
-    </section>
-
-    <section id="about" class="about-box">
-        <h3>درباره من</h3>
-        <p>به وب‌سایت رسمی Samircrfxgroup خوش آمدید! ما ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
-        <p class="highlight">💎ثروت در دستان شما خواهد بود💎</p>
     </section>
 
     <footer>
@@ -438,13 +399,6 @@
             });
             link.addEventListener('mouseleave', function() {
                 link.style.transform = 'scale(1)';
-            });
-        });
-
-        document.getElementById("about-btn").addEventListener("click", function(event) {
-            event.preventDefault();
-            document.getElementById("about").scrollIntoView({
-                behavior: "smooth"
             });
         });
     </script>
