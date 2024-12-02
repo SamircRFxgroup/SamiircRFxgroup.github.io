@@ -305,35 +305,31 @@
             color: #ffcc00;
         }
 
-        /* About Me Section */
-        .about-me {
-            padding: 80px 20px;
-            background-color: #5f6368;
-            color: #fff;
-            text-align: center;
+        /* About Me Box */
+        .about-box {
+            background-color: #444;
+            padding: 40px;
             margin-top: 50px;
             border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            color: #fff;
         }
 
-        .about-me h3 {
-            font-size: 32px;
+        .about-box h3 {
+            font-size: 28px;
             margin-bottom: 20px;
         }
 
-        .about-me p {
+        .about-box p {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
-        .about-me span {
-            color: yellow;
+        .about-box .highlight {
+            color: #ffcc00;
+            font-size: 20px;
             font-weight: bold;
-            font-size: 22px;
-        }
-
-        /* Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
         }
     </style>
 </head>
@@ -342,9 +338,8 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#about-me"><span class="btn-hover-animate"></span>درباره من</a></li>
-                <li><a href="#programs"><span class="btn-hover-animate"></span>برنامه‌ها و شبکه‌های اجتماعی</a></li>
-                <li><a href="#admins"><span class="btn-hover-animate"></span>ادمین‌ها</a></li>
+                <li><a href="#about" id="about-link">درباره من</a></li>
+                <!-- other links -->
             </ul>
         </nav>
     </header>
@@ -353,7 +348,7 @@
         <h2>به دنیای ترید در بازار فارکس خوش آمدید</h2>
     </section>
 
-    <section id="programs" class="programs-section fadeInUp">
+    <section class="programs-section fadeInUp">
         <h2>برنامه‌ها و شبکه‌های اجتماعی</h2>
         <div class="programs-row">
             <div class="program-box">
@@ -371,7 +366,7 @@
         </div>
     </section>
 
-    <section id="admins" class="admin-boxes fadeInUp">
+    <section class="admin-boxes fadeInUp">
         <div class="admin-box">
             <h3>ادمین خدمات</h3>
             <p>برای ارتباط با پشتیبانی و دریافت اطلاعات بیشتر از خدمات ما، به ادمین پیام بدهید.</p>
@@ -384,10 +379,10 @@
         </div>
     </section>
 
-    <section id="about-me" class="about-me">
-        <h3>درباره ما</h3>
+    <section id="about" class="about-box fadeInUp">
+        <h3>درباره من</h3>
         <p>به وب‌سایت رسمی ما خوش آمدید! ما بیش از ۵ سال است در زمینه معاملگری در بازارهای مالی فعالیت داریم و خدمات آموزش رایگان و سیگنال VIP رایگان را به شما عزیزان ارائه می‌کنیم. هدف ما موفقیت شما در بازارهای مالی است.</p>
-        <p><span>💎ثروت در دستان شما خواهد بود💎</span></p>
+        <p class="highlight">💎ثروت در دستان شما خواهد بود💎</p>
     </section>
 
     <footer>
@@ -397,6 +392,10 @@
     <div class="background-animation"></div>
 
     <script>
+        document.getElementById('about-link').addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+
         window.addEventListener('scroll', function() {
             const sections = document.querySelectorAll('.fadeInUp');
             const triggerBottom = window.innerHeight / 5 * 4;
